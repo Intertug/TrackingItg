@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Refresh" content="600">
+    <title>Tracking Intertug: Posicion Actual de los Remolcadores</title>
+    <style>
+      html, body, #map-canvas{
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&language=es"></script>
+    
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+
+<script>
+
+    var image = "http://i.imgur.com/qqxD2uN.png";//"http://i.imgur.com/yoZQPZu.gif";
+    var imagenPlataforma = "http://i.imgur.com/7Ecw2M5.png";
+    var imagenMuelle = "http://i.imgur.com/OfPqcEL.png";
+
+    var infoVentana = null;
+
+    function inicial(){
+
+      var centro = new google.maps.LatLng(13.879972, -80.390824);
+
+      var opciones = {
+        zoom: 4,
+        center: centro,
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        mapTypeControl: true,
+        mapTypeControlOptions:{
+          position: google.maps.ControlPosition.LEFT_TOP
+        },
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER
+        },
+        panControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER
+        },
+        scaleControl: true,
+        scaleControlOptions: {
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+        },
+
+      }
+
+      var mapa = new google.maps.Map(document.getElementById("map-canvas"), opciones);
+
+      setMarkers(mapa, plataformas);
+      setMarcadores(mapa, tugs);
+      infoVentana = new google.maps.InfoWindow({
+        content: ""
+      });
+
+      var homeControlDiv = document.createElement('div');
+      var homeControl = new HomeControl(homeControlDiv, mapa);
+
+      homeControlDiv.index = 1;
+      mapa.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+
+    }
+
+    function crearZoom(controlDiv, map, nombre){
+
+      controlDiv.style.padding = '5px';
+
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = 'white';
+      controlUI.style.borderStyle = 'solid';
+      controlUI.style.borderWidth = '2px';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Centrar '+ nombre;
+      controlDiv.appendChild(controlUI);
+
+      var controlText = document.createElement('div');
+      controlText.style.fontFamily = 'Arial,sans-serif';
+      controlText.style.fontSize = '12px';
+      controlText.style.paddingLeft = '4px';
+      controlText.style.paddingRight = '4px';
+      controlText.innerHTML = '<b>'+nombre+'</b>';
+      controlUI.appendChild(controlText);
+
+      //agregar remolcador = new google.maps.LatLng(tugs[n][1], tugs[n][2]);
+      boreas = new google.maps.LatLng(tugs[0][1], tugs[0][2]);
+      alisios = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
+      capidahl = new google.maps.LatLng(tugs[3][1], tugs[3][2]);
+      eosii = new google.maps.LatLng(tugs[1][1], tugs[1][2]);
+      mistral = new google.maps.LatLng(tugs[4][1], tugs[4][2]);
+      saga = new google.maps.LatLng(tugs[5][1], tugs[5][2]);
+      titania = new google.maps.LatLng(tugs[6][1], tugs[6][2]);
+      chinook = new google.maps.LatLng(tugs[7][1], tugs[7][2]);
+      sirocco = new google.maps.LatLng(tugs[8][1], tugs[8][2]);
+      aquavit = new google.maps.LatLng(tugs[9][1], tugs[9][2]);
+      carex = new google.maps.LatLng(tugs[10][1], tugs[10][2]);
+      vali = new google.maps.LatLng(tugs[11][1], tugs[11][2]);
+      tanok = new google.maps.LatLng(tugs[12][1], tugs[12][2]);
+      seatrout = new google.maps.LatLng(tugs[13][1], tugs[13][2]);
+      kin = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
+      barupacifico = new google.maps.LatLng(tugs[15][1], tugs[15][2]);
+      baruinti = new google.maps.LatLng(tugs[16][1], tugs[16][2]);
+      /*
+      odin = new google.maps.LatLng(tugs[8][1], tugs[8][2]);
+      ran = new google.maps.LatLng(tugs[12][1], tugs[12][2]);
+      cristina = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
+      */
+      google.maps.event.addDomListener(controlUI, 'click', function() {
+        
+        if(nombre == 'Boreas'){
+          map.setCenter(boreas);
+        }
+        /*agregar:
+        else if(nombre == 'Remolcador'){
+          map.setCenter(remolcador);
+        }
+        */
+        else if(nombre == 'Alisios'){
+          map.setCenter(alisios);
+        }
+        else if(nombre == 'Capidahl'){
+          map.setCenter(capidahl);
+        }
+        else if(nombre == 'EosII'){
+          map.setCenter(eosii);
+        }
+        else if(nombre == 'Mistral'){
+          map.setCenter(mistral);
+        }
+        else if(nombre == 'Saga'){
+          map.setCenter(saga);
+        }
+        else if(nombre == 'Titania'){
+          map.setCenter(titania);
+        }
+        
+        else if(nombre == 'Chinook'){
+          map.setCenter(chinook);
+        }
+        else if(nombre == 'Sirocco'){
+          map.setCenter(sirocco);
+        }
+        else if(nombre == 'Aquavit'){
+          map.setCenter(aquavit);
+        }
+        else if(nombre == 'Carex'){
+          map.setCenter(carex);
+        }
+        else if(nombre == 'Vali'){
+          map.setCenter(vali);
+        }
+        else if(nombre == 'Tanok'){
+          map.setCenter(tanok);
+        }
+        else if(nombre == 'Seatrout'){
+          map.setCenter(seatrout);
+        }
+        else if(nombre == 'Kin'){
+          map.setCenter(kin);
+        }
+        else if(nombre == 'BaruPacifico'){
+          map.setCenter(barupacifico);
+        }
+        else if(nombre == 'BaruInti'){
+          map.setCenter(baruinti);
+        }
+        /*
+        else if(nombre == 'Odin'){
+          map.setCenter(odin);
+        }
+        else if(nombre == 'Ran'){
+          map.setCenter(ran);
+        }
+        else if(nombre == 'Cristina'){
+          map.setCenter(cristina);
+        }
+        */
+        map.setZoom(11)
+      });
+
+    }
+
+    function HomeControl(controlDiv, map) {
+
+      // crearZoom(controlDiv, map, 'Remolcador');
+      crearZoom(controlDiv, map, 'Alisios');
+      crearZoom(controlDiv, map, 'Aquavit');
+      crearZoom(controlDiv, map, 'BaruInti'); 
+      crearZoom(controlDiv, map, 'BaruPacifico'); 
+      crearZoom(controlDiv, map, 'Boreas');
+      crearZoom(controlDiv, map, 'Capidahl');
+      crearZoom(controlDiv, map, 'Carex');
+      crearZoom(controlDiv, map, 'Chinook');
+      crearZoom(controlDiv, map, 'EosII');
+      crearZoom(controlDiv, map, 'Kin');
+      crearZoom(controlDiv, map, 'Mistral');
+      crearZoom(controlDiv, map, 'Saga');
+      crearZoom(controlDiv, map, 'Seatrout');
+      crearZoom(controlDiv, map, 'Sirocco');
+      crearZoom(controlDiv, map, 'Tanok');
+      crearZoom(controlDiv, map, 'Titania');
+      crearZoom(controlDiv, map, 'Vali');    
+            
+      /*
+      crearZoom(controlDiv, map, 'Odin');
+      crearZoom(controlDiv, map, 'Ran');
+      crearZoom(controlDiv, map, 'Cristina');
+      */
+    }
+
+
+    var tugs = [
+
+      /*
+      agregar:
+      ["Remolcador", {{loopRemolcador.0}}, {{loopRemolcador.1}}, 1, "Nombre: <strong>Remolcador</strong> <br/> Fecha: {{loopRemolcador.3}} <br/> Velocidad: {{loopRemolcador.2}} Nudos"],
+      */
+      ["Boreas", {{loopBoreas.0}}, {{loopBoreas.1}}, 1, "Nombre: <strong>Boreas</strong> <br/> Fecha: {{loopBoreas.3}} <br/> Velocidad: {{loopBoreas.2}} Nudos"],
+      ["EosII", {{loopEosii.0}}, {{loopEosii.1}}, 2, "Nombre: <strong>Eos II</strong> <br/> Fecha: {{loopEosii.3}} <br/> Velocidad:  {{loopEosii.2}} Nudos"],
+      ["Alisios", {{loopAlisios.0}}, {{loopAlisios.1}}, 3, "Nombre: <strong>Alisios</strong> <br/> Fecha: {{loopAlisios.3}} <br/> Velocidad:  {{loopAlisios.2}} Nudos"],
+      ["Capidahl", {{loopCapidahl.0}}, {{loopCapidahl.1}}, 4, "Nombre: <strong>Capidahl</strong> <br/> Fecha: {{loopCapidahl.3}} <br/> Velocidad:  {{loopCapidahl.2}} Nudos"],
+      ["Mistral", {{loopMistral.0}}, {{loopMistral.1}}, 4, "Nombre: <strong>Mistral</strong> <br/> Fecha: {{loopMistral.3}} <br/> Velocidad:  {{loopMistral.2}} Nudos"],
+      ["Saga", {{loopSaga.0}}, {{loopSaga.1}}, 4, "Nombre: <strong>Saga</strong> <br/> Fecha: {{loopSaga.3}} <br/> Velocidad:  {{loopSaga.2}} Nudos"],
+      ["Titania", {{loopTitania.0}}, {{loopTitania.1}}, 4, "Nombre: <strong>Titania</strong> <br/> Fecha: {{loopTitania.3}} <br/> Velocidad:  {{loopTitania.2}} Nudos"],     
+      ["Chinook", {{loopChinook.0}}, {{loopChinook.1}}, 4, "Nombre: <strong>Chinook</strong> <br/> Fecha: {{loopChinook.3}} <br/> Velocidad:  {{loopChinook.2}} Nudos"],
+      ["Sirocco", {{loopSirocco.0}}, {{loopSirocco.1}}, 4, "Nombre: <strong>Sirocco</strong> <br/> Fecha: {{loopSirocco.3}} <br/> Velocidad:  {{loopSirocco.2}} Nudos"],
+      ["Aquavit", {{loopAquavit.0}}, {{loopAquavit.1}}, 4, "Nombre: <strong>Aquavit</strong> <br/> Fecha: {{loopAquavit.3}} <br/> Velocidad:  {{loopAquavit.2}} Nudos"],
+      ["Carex", {{loopCarex.0}}, {{loopCarex.1}}, 4, "Nombre: <strong>Carex</strong> <br/> Fecha: {{loopCarex.3}} <br/> Velocidad:  {{loopCarex.2}} Nudos"],
+      ["Vali", {{loopVali.0}}, {{loopVali.1}}, 4, "Nombre: <strong>Vali</strong> <br/> Fecha: {{loopVali.3}} <br/> Velocidad:  {{loopVali.2}} Nudos"],
+      ["Tanok", {{loopTanok.0}}, {{loopTanok.1}}, 4, "Nombre: <strong>Tanok</strong> <br/> Fecha: {{loopTanok.3}} <br/> Velocidad:  {{loopTanok.2}} Nudos"],
+      ["Seatrout", {{loopSeatrout.0}}, {{loopSeatrout.1}}, 4, "Nombre: <strong>Seatrout</strong> <br/> Fecha: {{loopSeatrout.3}} <br/> Velocidad:  {{loopSeatrout.2}} Nudos"],
+      ["Kin", {{loopKin.0}}, {{loopKin.1}}, 4, "Nombre: <strong>Kin</strong> <br/> Fecha: {{loopKin.3}} <br/> Velocidad:  {{loopKin.2}} Nudos"],
+      ["BaruPacifico", {{loopBarupacifico.0}}, {{loopBarupacifico.1}}, 4, "Nombre: <strong>Barú Pacífico</strong> <br/> Fecha: {{loopBarupacifico.3}} <br/> Velocidad:  {{loopBarupacifico.2}} Nudos"],
+      ["BaruInti", {{loopBaruInti.0}}, {{loopBaruInti.1}}, 4, "Nombre: <strong>Barú Inti</strong> <br/> Fecha: {{loopBaruInti.3}} <br/> Velocidad:  {{loopBaruInti.2}} Nudos"],
+      /*
+      ["Odin", {{loopOdin.0}}, {{loopOdin.1}}, 4, "Nombre: <strong>Odin</strong> <br/> Fecha: {{loopOdin.3}} <br/> Velocidad:  {{loopOdin.2}} Nudos"],
+      ["Ran", {{loopRan.0}}, {{loopRan.1}}, 4, "Nombre: <strong>Ran</strong> <br/> Fecha: {{loopRan.3}} <br/> Velocidad:  {{loopRan.2}} Nudos"],
+      ["Cristina", {{loopCristina.0}}, {{loopCristina.1}}, 4, "Nombre: <strong>Cristina</strong> <br/> Fecha: {{loopCristina.3}} <br/> Velocidad:  {{loopCristina.2}} Nudos"],
+            */
+    ];
+
+    var plataformas = [
+
+      ["Corvina11", -3.59541666666, -80.73716666666667, 1, "Plataforma Corvina <br/> CX-11"],
+      ["Corvina15", -3.60750, -80.73667, 1, "Plataforma Corvina <br/> CX-15"],
+      ["Albacora", -3.42000, -80.58362, 1, "Plataforma Albacora <br/> Z1-8A"],
+      ["Muelle", -3.633691, -80.587355, 1, "Muelle De La Cruz"],
+
+    ];
+
+    function setMarkers(mapa, markers){
+
+        for (var i = 0; i < markers.length; i++) {
+
+        var plataformas = markers[i];
+        var platLatLon = new google.maps.LatLng(plataformas[1], plataformas[2]);
+        var marcador = new google.maps.Marker({
+          position: platLatLon,
+          map: mapa,
+          icon: (plataformas[0] == "Muelle" ? imagenMuelle : imagenPlataforma),
+          draggable: false,
+          title: plataformas[0],
+          zIndex: plataformas[3],
+          html: plataformas[4],
+        });
+
+        google.maps.event.addListener(marcador, "mouseover", function () {
+          infoVentana.setContent(this.html);
+          infoVentana.open(mapa, this);
+        });
+
+      }
+    }
+
+    function setMarcadores(mapa, marcadores) {
+
+      for (var i = 0; i < marcadores.length; i++) {
+
+        var tugs = marcadores[i];
+        var tugsLatLon = new google.maps.LatLng(tugs[1], tugs[2]);
+        var marcador = new google.maps.Marker({
+          position: tugsLatLon,
+          map: mapa,
+          icon: image,
+          draggable: false,
+          title: tugs[0],
+          zIndex: tugs[3],
+          html: tugs[4],
+        });
+
+        google.maps.event.addListener(marcador, "mouseover", function () {
+          infoVentana.setContent(this.html);
+          infoVentana.open(mapa, this);
+        });
+
+        google.maps.event.addListener(marcador, "click", function () {
+
+          /*
+          agregar:
+          else if (this.title == "Remolcador"){
+            window.location = "remolcador";            
+          }
+          */
+          if(this.title == "Boreas"){
+            window.location = "boreas";
+          }
+          else if (this.title == "EosII"){
+            window.location = "eosii";            
+          }
+          else if (this.title == "Alisios"){
+            window.location = "alisios";            
+          }
+          else if (this.title == "Capidahl"){
+            window.location = "capidahl";            
+          }
+          else if (this.title == "Mistral"){
+            window.location = "mistral";            
+          }
+          else if (this.title == "Saga"){
+            window.location = "saga";            
+          }
+          else if (this.title == "Titania"){
+            window.location = "titania";            
+          }
+          
+          else if (this.title == "Chinook"){
+            window.location = "chinook";            
+          }
+          else if (this.title == "Sirocco"){
+            window.location = "sirocco";            
+          }
+          else if (this.title == "Aquavit"){
+            window.location = "aquavit";            
+          }
+          else if (this.title == "Carex"){
+            window.location = "carex";            
+          }
+          else if (this.title == "Vali"){
+            window.location = "vali";            
+          }
+          else if (this.title == "Tanok"){
+            window.location = "tanok";            
+          }
+          else if (this.title == "Seatrout"){
+            window.location = "seatrout";            
+          }
+          else if (this.title == "Kin"){
+            window.location = "kin";            
+          }
+          else if (this.title == "BaruPacifico"){
+            window.location = "barupacifico";            
+          }
+          else if (this.title == "BaruInti"){
+            window.location = "baruinti";            
+          }
+          /*
+          else if (this.title == "Odin"){
+            window.location = "odin";            
+          }
+          else if (this.title == "Ran"){
+            window.location = "ran";            
+          }
+          else if (this.title == "Cristina"){
+            window.location = "cristina";            
+          }
+
+          */
+        });
+
+        google.maps.event.addListener(marcador, "mouseout", function () {
+          infoVentana.close();
+
+        });
+      }
+    }
+
+    google.maps.event.addDomListener(window, 'load', inicial);
+
+    </script>
+  </body>
+</html>
