@@ -363,6 +363,7 @@
         });
 
         setMarcadores(mapa, tugs);
+        setUltimo(mapa, tugs);
         infoVentana = new google.maps.InfoWindow({
           content: ""
         });
@@ -387,6 +388,32 @@
           {% endfor %}
 
     ];
+
+    function setUltimo(mapa, markers){
+
+        var plataformas = markers[markers.length-1];
+        var platLatLon = new google.maps.LatLng(plataformas[1], plataformas[2]);
+        var marcador = new google.maps.Marker({
+          position: platLatLon,
+          map: mapa,
+          icon: image,
+          draggable: false,
+          title: plataformas[0],
+          zIndex: plataformas[3],
+          html: plataformas[4],
+        });
+
+        google.maps.event.addListener(marcador, "mouseover", function () {
+          infoVentana.setContent(this.html);
+          infoVentana.open(mapa, this);
+        });
+
+        google.maps.event.addListener(marcador, "mouseout", function () {
+          infoVentana.close();
+
+        });
+      
+    } 
 
     function setMarcadores(mapa, marcadores) {
 
