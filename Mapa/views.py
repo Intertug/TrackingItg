@@ -99,7 +99,7 @@ def llenarMapa(nombre):
 
 	cursorAlisios = connection.cursor()
 	#cursorAlisios.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where rm = '"+str(nombre)+"' order by id desc limit 1;")
-	cursorAlisios.execute("select top 1 Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' order by TimeString desc;")
+	cursorAlisios.execute("select top 1 Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString, vesselname from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' order by TimeString desc;")
 	rowsA = cursorAlisios.fetchall()
 	matrizA =  llenarMatriz(rowsA)
 	loopAlisios = [matrizA[0]['latitud'], matrizA[0]['longitud'], matrizA[0]['velocidad'], matrizA[0]['fechahora']]
