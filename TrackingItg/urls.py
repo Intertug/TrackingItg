@@ -4,7 +4,7 @@ from Mapa.views import getPeru, getMapa, getBoreas, getEosii, getAlisios, getCap
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'TrackinItg.views.home', name='home'),
+    # url(r'^$', 'TrackingItg.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     (r'^$', getMapa),
     (r'^boreas$', getBoreas),

@@ -542,3 +542,4 @@ def getAlisios(request):
 			loopAlisios.append([matriz[i]['latitud'], matriz[i]['longitud'], matriz[i]['velocidad'], matriz[i]['fechahora']])	
 
 	return render_to_response('alisios.html', locals())
+# Create your views here.

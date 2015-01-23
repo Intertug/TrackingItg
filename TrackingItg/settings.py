@@ -1,5 +1,5 @@
 """
-Django settings for TrackinItg project.
+Django settings for TrackingItg project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8x4gu^@atl5@1bo8(&al6hmm)qd*f253v^@)=v9_y9b3#@j(ro'
+SECRET_KEY = '0#+0w^h=-2532_p358)awj=u0=w&v0jmulshu*ejsbi^+j=v5('
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,7 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Mapa',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,24 +48,39 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'TrackinItg.urls'
+ROOT_URLCONF = 'TrackingItg.urls'
 
-WSGI_APPLICATION = 'TrackinItg.wsgi.application'
+WSGI_APPLICATION = 'TrackingItg.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'daq',
-        'USER': 'root',                
-        'PASSWORD': 'variables',                
-        'HOST': '192.168.120.15',                      
-        'PORT': '', 
+        'ENGINE': 'sql_server.pyodbc',
+        'NAME': 'ITG-Sio',            
+        'USER': 'SioPlatformUsr',     
+        'PASSWORD': 'S10Pl@tf0rm',    
+        'HOST': 'MSSQL-PYTHON',       
+        'PORT': '1433',                      
+        'OPTIONS': {
+                'host_is_server': False,
+                'dsn': 'MSSQL-PYTHON',
+        },
     }
 }
+DATABASE_NAME = 'ITG-Sio'
+DATABASE_HOST = 'MSSQL-PYTHON'
+DATABASE_PORT = '1433'
+DATABASE_USER = 'SioPlatformUsr'
+DATABASE_PASSWORD = 'S10Pl@tf0rm'
+DATABASE_OPTIONS = {
+        'host_is_server': False,
+        'dsn': 'MSSQL-PYTHON',
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
