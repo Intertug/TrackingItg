@@ -98,7 +98,8 @@ def getGps(request, rem):
 def llenarMapa(nombre):
 
 	cursorAlisios = connection.cursor()
-	cursorAlisios.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where rm = '"+str(nombre)+"' order by id desc limit 1;")
+	#cursorAlisios.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where rm = '"+str(nombre)+"' order by id desc limit 1;")
+	cursorAlisios.execute("select top 1 Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' order by TimeString desc;")
 	rowsA = cursorAlisios.fetchall()
 	matrizA =  llenarMatriz(rowsA)
 	loopAlisios = [matrizA[0]['latitud'], matrizA[0]['longitud'], matrizA[0]['velocidad'], matrizA[0]['fechahora']]
@@ -134,10 +135,10 @@ def getMapa(request):
 def getPeru(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
-	loopMistral = llenarMapa('mistral')
-	loopVali = llenarMapa('vali')
-	loopBarupacifico = llenarMapa('barupacifico')
-	loopBaruInti = llenarMapa('baruinti')
+	loopMistral = llenarMapa('MISTRAL')
+	loopVali = llenarMapa('VALI')
+	loopBarupacifico = llenarMapa('BARU PACIFICO')
+	loopBaruInti = llenarMapa('BARU INTI')
 
 	return render_to_response('peru.html', locals())
 
