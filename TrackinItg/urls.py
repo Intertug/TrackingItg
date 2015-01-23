@@ -1,16 +1,12 @@
-from django.conf.urls.defaults import patterns, include, url
-
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
-#Agregar ,getRmeolcador
+from django.conf.urls import patterns, include, url
+from django.contrib import admin
 from Mapa.views import getPeru, getMapa, getBoreas, getEosii, getAlisios, getCapidahl, getMistral, getSaga, getTitania, getChinook, getSirocco, getAquavit, getCarex, getVali, getTanok, getSeatrout, getKin, getBarupacifico, getBaruInti #, getCristina, getOdin, getRan
 
 urlpatterns = patterns('',
-
-    #agregar (r'^remolcador$', getRemolcador),
-	(r'^$', getMapa),
+    # Examples:
+    # url(r'^$', 'TrackinItg.views.home', name='home'),
+    # url(r'^blog/', include('blog.urls')),
+    (r'^$', getMapa),
     (r'^boreas$', getBoreas),
     (r'^eosii$', getEosii),
     (r'^alisios$', getAlisios),
@@ -32,14 +28,6 @@ urlpatterns = patterns('',
     (r'^barupacifico$', getBarupacifico),
     (r'^baruinti$', getBaruInti),
     (r'^peru$', getPeru),
-    
-    # Examples:
-    # url(r'^$', 'Tracking.views.home', name='home'),
-    # url(r'^Tracking/', include('Tracking.foo.urls')),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
