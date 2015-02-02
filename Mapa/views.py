@@ -80,8 +80,8 @@ def getGps(request, nombre):
 	hoy = date.today()
 	delta = timedelta(days=1)
 	hoy2 = hoy + delta
-	hoy = str(hoy.year) + str(hoy.month) + str(hoy.day)
-	hoy2 = str(hoy2.year) + str(hoy2.month) + str(hoy2.day)
+	hoy = hoy.isoformat()
+	hoy2 = hoy2.isoformat()
 
 	cursorGps = connection.cursor()
 
