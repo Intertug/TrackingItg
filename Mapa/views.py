@@ -78,6 +78,7 @@ def llenarMatriz(rows):
 def getGps(request, nombre):
 
 	hoy = date.today()
+	print "today " + hoy
 	delta = timedelta(days=1)
 	hoy2 = hoy + delta
 	hoy = hoy.isoformat()
@@ -88,7 +89,8 @@ def getGps(request, nombre):
 	if 'fecha' in request.GET:
 		time = request.GET['fecha']
 		hoy = datetime.strptime(time, "%Y-%m-%d")
-		print hoy, time
+		print "time " + time
+		print "hoy " + hoy
 		delta = timedelta(days=1)
 		hoy2 = hoy + delta
 		hoy = hoy.isoformat()
