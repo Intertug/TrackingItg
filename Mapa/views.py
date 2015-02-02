@@ -139,6 +139,12 @@ def getColombia(request):
 
 	return render_to_response('colombia.html', locals())
 
+def getMexico(request):
+	
+	#agregar loopRemolcador = llenarMapa('remolcador')
+
+	return render_to_response('mexico.html', locals())
+
 def getPeru(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
