@@ -189,7 +189,7 @@
         var marcador = new google.maps.Marker({
           position: platLatLon,
           map: mapa,
-          icon: (plataformas[0] == "Muelle" ? imagenMuelle : imagenPlataforma),
+          icon: (plataformas[0] == "muelle" ? imagenMuelle : (plataformas[0] == "existente" ? imagenPlataforma : ( plataformas[0] == "zona"? imageWaves: imagenPropuesta))),
           draggable: false,
           title: plataformas[0],
           zIndex: plataformas[3],

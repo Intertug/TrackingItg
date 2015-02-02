@@ -291,10 +291,11 @@
     </section>
 
     <script>
-
-      var image = "http://i.imgur.com/qqxD2uN.png";//"http://i.imgur.com/yoZQPZu.gif";
-      var imagenPlataforma = "http://i.imgur.com/7Ecw2M5.png";
-      var imagenMuelle = "http://i.imgur.com/OfPqcEL.png";
+    var image = "http://i.imgur.com/qqxD2uN.png";//"http://i.imgur.com/yoZQPZu.gif";
+    var imagenPlataforma = "http://i.imgur.com/7Ecw2M5.png";
+    var imagenPropuesta = "http://s7.postimg.org/pz2ndrm9z/Offshore_Tower_Red.png?noCache=1422656982";
+    var imagenMuelle = "http://i.imgur.com/OfPqcEL.png";
+    var imageWaves = "http://s8.postimg.org/3u8drhhsx/Waves.png?noCache=14226573"
 
       var infoVentana = null;
 
@@ -392,10 +393,17 @@
 
     var plataformas = [
 
-      ["Corvina11", -3.59541666666, -80.73716666666667, 1, "Plataforma Corvina <br/> CX-11"],
-      ["Corvina15", -3.60750, -80.73667, 1, "Plataforma Corvina <br/> CX-15"],
-      ["Albacora", -3.42000, -80.58362, 1, "Plataforma Albacora <br/> Z1-8A"],
-      ["Muelle", -3.633691, -80.587355, 1, "Muelle De La Cruz"],
+      ["existente", -3.59541666666, -80.73716666666667, 1, "CX11"],
+      ["existente", -3.60750, -80.73667, 1, "CX15"],
+      ["existente", -3.42000, -80.58362, 1, "Z1-8-A"],
+      ["muelle", -3.633691, -80.587355, 1, "Muelle La Cruz"],
+      ["zona", -3.599067, -80.704733, 1, "Corvina Este-1X"],
+      ["zona", -3.570900, -80.829583, 1, "Zona R"],
+      ["zona", -3.540667, -80.853617, 1, "Z1-305"],
+      ["propuesta", -3.522417, -80.845783, 1, "Raya: Zona A"],
+      ["propuesta", -3.632433, -80.776300, 1, "Zona B-Delfin 1X"],
+      ["propuesta", -3.762750, -80.864067, 1, "Piedra Redonda Z1-14"],
+      ["existente", -3.806533, -80.891750, 1, "Piedra Redonda"],
 
     ];
 
@@ -408,7 +416,7 @@
         var marcador = new google.maps.Marker({
           position: platLatLon,
           map: mapa,
-          icon: (plataformas[0] == "Muelle" ? imagenMuelle : imagenPlataforma),
+          icon: (plataformas[0] == "muelle" ? imagenMuelle : (plataformas[0] == "existente" ? imagenPlataforma : ( plataformas[0] == "zona"? imageWaves: imagenPropuesta))),
           draggable: false,
           title: plataformas[0],
           zIndex: plataformas[3],
