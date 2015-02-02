@@ -297,7 +297,7 @@ def getVali(request):
 	loopVali = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'vali':
+		if matrizGps[i]['rm'] == 'VALI':
 			loopVali.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('vali.html', locals())
