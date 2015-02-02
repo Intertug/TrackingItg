@@ -132,6 +132,13 @@ def getMapa(request):
 
 	return render_to_response('mapa.html', locals())
 
+def getColombia(request):
+	
+	#agregar loopRemolcador = llenarMapa('remolcador')
+	loopCarex = llenarMapa('CAREX')
+
+	return render_to_response('colombia.html', locals())
+
 def getPeru(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')

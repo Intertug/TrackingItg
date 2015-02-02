@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Refresh" content="600">
+    <title>Tracking Intertug: Posicion Actual Flota Mexico</title>
+    <style>
+      html, body, #map-canvas{
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&language=es"></script>
+    
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+
+<script>
+
+    var image = "http://i.imgur.com/qqxD2uN.png";//"http://i.imgur.com/yoZQPZu.gif";
+    //var imagenPlataforma = "http://i.imgur.com/7Ecw2M5.png";
+    //var imagenMuelle = "http://i.imgur.com/OfPqcEL.png";
+
+    var infoVentana = null;
+
+    function inicial(){
+
+      var centro = new google.maps.LatLng(20.6653694,-93.8310411);
+
+      var opciones = {
+        zoom: 7,
+        center: centro,
+        mapTypeId: google.maps.MapTypeId.TERRAIN,
+        mapTypeControl: true,
+        mapTypeControlOptions:{
+          position: google.maps.ControlPosition.LEFT_TOP
+        },
+        streetViewControl: false,
+        zoomControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER
+        },
+        panControlOptions: {
+          position: google.maps.ControlPosition.LEFT_CENTER
+        },
+        scaleControl: true,
+        scaleControlOptions: {
+          position: google.maps.ControlPosition.BOTTOM_CENTER
+        },
+
+      }
+
+      var mapa = new google.maps.Map(document.getElementById("map-canvas"), opciones);
+
+      //setMarkers(mapa, plataformas);
+      setMarcadores(mapa, tugs);
+      infoVentana = new google.maps.InfoWindow({
+        content: ""
+      });
+
+      var homeControlDiv = document.createElement('div');
+      var homeControl = new HomeControl(homeControlDiv, mapa);
+
+      homeControlDiv.index = 1;
+      mapa.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
+
+    }
+
+    function crearZoom(controlDiv, map, nombre){
+
+      controlDiv.style.padding = '5px';
+
+      var controlUI = document.createElement('div');
+      controlUI.style.backgroundColor = 'white';
+      controlUI.style.borderStyle = 'solid';
+      controlUI.style.borderWidth = '2px';
+      controlUI.style.cursor = 'pointer';
+      controlUI.style.textAlign = 'center';
+      controlUI.title = 'Centrar '+ nombre;
+      controlDiv.appendChild(controlUI);
+
+      var controlText = document.createElement('div');
+      controlText.style.fontFamily = 'Arial,sans-serif';
+      controlText.style.fontSize = '12px';
+      controlText.style.paddingLeft = '4px';
+      controlText.style.paddingRight = '4px';
+      controlText.innerHTML = '<b>'+nombre+'</b>';
+      controlUI.appendChild(controlText);
+
+      //agregar remolcador = new google.maps.LatLng(tugs[n][1], tugs[n][2]);
+
+      seatrout = new google.maps.LatLng(tugs[0][1], tugs[0][2]);
+      tanok = new google.maps.LatLng(tugs[1][1], tugs[1][2]);
+      kin = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
+      google.maps.event.addDomListener(controlUI, 'click', function() {
+        
+
+        if(nombre == 'Seatrout'){
+          map.setCenter(seatrout);
+        }
+        else if(nombre == 'Tanok'){
+          map.setCenter(tanok);
+        }
+        else if(nombre == 'kin'){
+          map.setCenter(kin);
+        }
+        map.setZoom(11)
+      });
+
+    }
+
+    function HomeControl(controlDiv, map) {
+
+      // crearZoom(controlDiv, map, 'Remolcador');
+      crearZoom(controlDiv, map, 'Seatrout'); 
+      crearZoom(controlDiv, map, 'Tanok'); 
+      crearZoom(controlDiv, map, 'Kin');
+    }
+
+
+    var tugs = [
+
+      /*
+      agregar:
+      ["Remolcador", {{loopRemolcador.0}}, {{loopRemolcador.1}}, 1, "Nombre: <strong>Remolcador</strong> <br/> Fecha: {{loopRemolcador.3}} <br/> Velocidad: {{loopRemolcador.2}} Nudos"],
+      */
+      ["Seatrout", {{loopSeatrout.0}}, {{loopSeatrout.1}}, 4, "Nombre: <strong>Seatrout</strong> <br/> Fecha: {{loopSeatrout.3}} <br/> Velocidad:  {{loopSeatrout.2}} Nudos"],
+      ["Tanok", {{loopTanok.0}}, {{loopTanok.1}}, 4, "Nombre: <strong>Tanok</strong> <br/> Fecha: {{loopTanok.3}} <br/> Velocidad:  {{loopTanok.2}} Nudos"],
+      ["Kin", {{loopKin.0}}, {{loopKin.1}}, 4, "Nombre: <strong>Kin</strong> <br/> Fecha: {{loopKin.3}} <br/> Velocidad:  {{loopKin.2}} Nudos"],
+    ];
+
+    // var plataformas = [
+
+    //   ["Corvina11", -3.59541666666, -80.73716666666667, 1, "Plataforma Corvina <br/> CX-11"],
+    //   ["Corvina15", -3.60750, -80.73667, 1, "Plataforma Corvina <br/> CX-15"],
+    //   ["Albacora", -3.42000, -80.58362, 1, "Plataforma Albacora <br/> Z1-8A"],
+    //   ["Muelle", -3.633691, -80.587355, 1, "Muelle De La Cruz"],
+
+    // ];
+
+    // function setMarkers(mapa, markers){
+
+    //     for (var i = 0; i < markers.length; i++) {
+
+    //     var plataformas = markers[i];
+    //     var platLatLon = new google.maps.LatLng(plataformas[1], plataformas[2]);
+    //     var marcador = new google.maps.Marker({
+    //       position: platLatLon,
+    //       map: mapa,
+    //       icon: (plataformas[0] == "Muelle" ? imagenMuelle : imagenPlataforma),
+    //       draggable: false,
+    //       title: plataformas[0],
+    //       zIndex: plataformas[3],
+    //       html: plataformas[4],
+    //     });
+
+    //     google.maps.event.addListener(marcador, "mouseover", function () {
+    //       infoVentana.setContent(this.html);
+    //       infoVentana.open(mapa, this);
+    //     });
+
+    //   }
+    // }
+
+    function setMarcadores(mapa, marcadores) {
+
+      for (var i = 0; i < marcadores.length; i++) {
+
+        var tugs = marcadores[i];
+        var tugsLatLon = new google.maps.LatLng(tugs[1], tugs[2]);
+        var marcador = new google.maps.Marker({
+          position: tugsLatLon,
+          map: mapa,
+          icon: image,
+          draggable: false,
+          title: tugs[0],
+          zIndex: tugs[3],
+          html: tugs[4],
+        });
+
+        google.maps.event.addListener(marcador, "mouseover", function () {
+          infoVentana.setContent(this.html);
+          infoVentana.open(mapa, this);
+        });
+
+        google.maps.event.addListener(marcador, "click", function () {
+
+          /*
+          agregar:
+          else if (this.title == "Remolcador"){
+            window.location = "remolcador";            
+          }
+          */
+          if (this.title == "Seatrout"){
+            window.location = "seatrout";            
+          }
+          else if (this.title == "Tanok"){
+            window.location = "tanok";            
+          }
+          else if (this.title == "Kin"){
+            window.location = "kin";            
+          }
+        });
+
+        google.maps.event.addListener(marcador, "mouseout", function () {
+          infoVentana.close();
+
+        });
+      }
+    }
+
+    google.maps.event.addDomListener(window, 'load', inicial);
+
+    </script>
+  </body>
+</html>
