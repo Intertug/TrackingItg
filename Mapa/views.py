@@ -82,6 +82,8 @@ def getGps(request, nombre):
 	hoy2 = hoy + delta
 	hoy = hoy.isoformat()
 	hoy2 = hoy2.isoformat()
+	print hoy
+	print hoy2
 
 	cursorGps = connection.cursor()
 
@@ -92,8 +94,8 @@ def getGps(request, nombre):
 		print hoy
 		delta = timedelta(days=1)
 		hoy2 = hoy + delta
-		hoy = hoy.isoformat()
-		hoy2 = hoy2.isoformat()
+		hoy = hoy.isoformat()[:10]
+		hoy2 = hoy2.isoformat()[:10]
 		print hoy
 		print hoy2
 		#hora1 = request.GET['hora1']
