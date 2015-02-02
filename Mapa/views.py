@@ -83,6 +83,8 @@ def getGps(request, rem):
 	hoy = str(hoy.year) + str(hoy.month) + str(hoy.day)
 	hoy2 = str(hoy2.year) + str(hoy2.month) + str(hoy2.day)
 
+	cursorGps = connection.cursor()
+
 	if 'fecha' in request.GET:
 		fecha = request.GET['fecha']
 		hora1 = request.GET['hora1']
