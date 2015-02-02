@@ -87,7 +87,7 @@ def getGps(request, nombre):
 
 	if 'fecha' in request.GET:
 		time = request.GET['fecha']
-		hoy = datetime.strptime(time, "%Y-%m-%d %H:%M:%S")
+		hoy = datetime.strptime(time, "%Y-%m-%d")
 		print hoy, time
 		delta = timedelta(days=1)
 		hoy2 = hoy + delta
