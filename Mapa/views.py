@@ -86,8 +86,9 @@ def getGps(request, nombre):
 	cursorGps = connection.cursor()
 
 	if 'fecha' in request.GET:
-		hoy = request.GET['fecha']
-		print hoy
+		time = request.GET['fecha']
+		hoy = datetime.strptime(time, "%Y-%m-%d %H:%M:%S")
+		print hoy, time
 		delta = timedelta(days=1)
 		hoy2 = hoy + delta
 		hoy = hoy.isoformat()
