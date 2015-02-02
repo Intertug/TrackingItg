@@ -86,12 +86,17 @@ def getGps(request, nombre):
 	cursorGps = connection.cursor()
 
 	if 'fecha' in request.GET:
-		fecha = request.GET['fecha']
-		hora1 = request.GET['hora1']
-		hora2 = request.GET['hora2']
-		minutos1 = request.GET['minutos1']
-		minutos2 = request.GET['minutos2']
-		cursorGps.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(rem) + "';")			
+		hoy = request.GET['fecha']
+		delta = timedelta(days=1)
+		hoy2 = hoy + delta
+		hoy = hoy.isoformat()
+		hoy2 = hoy2.isoformat()
+		#hora1 = request.GET['hora1']
+		#hora2 = request.GET['hora2']
+		#minutos1 = request.GET['minutos1']
+		#minutos2 = request.GET['minutos2']
+		#cursorGps.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(rem) + "';")			
+		cursorGps.execute("select Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString, vesselname from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' and TimeString > '"+str(hoy)+"' and TimeString < '"+str(hoy2)+"';")
 	else:
 		#cursorGps.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where (fechahora between (NOW() - CURTIME()) AND NOW()) and rm ='"+ str(rem) +"';")
 		cursorGps.execute("select Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString, vesselname from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' and TimeString > '"+str(hoy)+"' and TimeString < '"+str(hoy2)+"';")
