@@ -75,7 +75,7 @@ def llenarMatriz(rows):
 
 	return matriz
 
-def getGps(request, rem):
+def getGps(request, nombre):
 
 	hoy = date.today()
 	delta = timedelta(days=1)
@@ -228,7 +228,7 @@ def getChinook(request):
 
 def getBarupacifico(request):
 	
-	gps = getGps(request, 'barupacifico')
+	gps = getGps(request, 'BARU PACIFICO')
 
 	#rowsPropB = getPropulsor(request, 'barupacifico', 'portside')
 	#rowsPropE = getPropulsor(request, 'barupacifico', 'starboard')
