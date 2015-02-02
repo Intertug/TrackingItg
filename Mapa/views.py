@@ -240,7 +240,7 @@ def getBarupacifico(request):
 	loopBarupacifico = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'barupacifico':
+		if matrizGps[i]['rm'] == 'BARU PACIFICO':
 			loopBarupacifico.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('barupacifico.html', locals())
