@@ -2,6 +2,10 @@
 from django.shortcuts import render_to_response
 from Mapa.models import *
 from django.db import connection
+from datetime import datetime, timedelta, date
+from monthdelta import MonthDelta
+
+remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5}
 
 def getPropulsor(request, nom, lado):
 
@@ -73,7 +77,11 @@ def llenarMatriz(rows):
 
 def getGps(request, rem):
 
-	cursorGps = connection.cursor()
+	hoy = date.today()
+	delta = timedelta(days=1)
+	hoy = str(hoy.year) + str(hoy.month) + str(hoy.day)
+	hoy2 = hoy + delta
+	hoy2 = str(hoy2.year) + str(hoy2.month) + str(hoy2.day)
 
 	if 'fecha' in request.GET:
 		fecha = request.GET['fecha']
@@ -83,8 +91,9 @@ def getGps(request, rem):
 		minutos2 = request.GET['minutos2']
 		cursorGps.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(rem) + "';")			
 	else:
-		cursorGps.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where (fechahora between (NOW() - CURTIME()) AND NOW()) and rm ='"+ str(rem) +"';")
-	
+		#cursorGps.execute("select latitud, latitudNS, longitud, longitudEW, velocidad, fechahora, rm from gps where (fechahora between (NOW() - CURTIME()) AND NOW()) and rm ='"+ str(rem) +"';")
+		cursorGps.execute("select Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString, vesselname from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' and TimeString > '"+str(hoy)+"' and TimeString < '"+str(hoy2)+"';")
+
 	rowsG = cursorGps.fetchall()
 	matrizGps = llenarMatriz(rowsG)
 	
@@ -142,6 +151,7 @@ def getColombia(request):
 def getMexico(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
+
 
 	return render_to_response('mexico.html', locals())
 
@@ -218,10 +228,10 @@ def getBarupacifico(request):
 	
 	gps = getGps(request, 'barupacifico')
 
-	rowsPropB = getPropulsor(request, 'barupacifico', 'portside')
-	rowsPropE = getPropulsor(request, 'barupacifico', 'starboard')
-	rowsGenB = getGenerador(request,'barupacifico', 'portside')
-	rowsGenE = getGenerador(request,'barupacifico', 'starboard')
+	#rowsPropB = getPropulsor(request, 'barupacifico', 'portside')
+	#rowsPropE = getPropulsor(request, 'barupacifico', 'starboard')
+	#rowsGenB = getGenerador(request,'barupacifico', 'portside')
+	#rowsGenE = getGenerador(request,'barupacifico', 'starboard')
 	
 	matrizGps = gps
 
