@@ -87,6 +87,7 @@ def getGps(request, nombre):
 
 	if 'fecha' in request.GET:
 		hoy = request.GET['fecha']
+		print hoy
 		delta = timedelta(days=1)
 		hoy2 = hoy + delta
 		hoy = hoy.isoformat()
