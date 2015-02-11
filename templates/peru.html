@@ -26,6 +26,10 @@
     var imageWaves = "http://s8.postimg.org/3u8drhhsx/Waves.png?noCache=1422657376";
     var infoVentana = null;
 
+  var AmarraderoAlbacora;
+  var AmarraderoCorvinaB;
+  var AmarraderoCorvina;
+
     function inicial(){
 
       var centro = new google.maps.LatLng(-3.920865, -80.507695);
@@ -54,6 +58,10 @@
 
       var mapa = new google.maps.Map(document.getElementById("map-canvas"), opciones);
 
+
+      AmarraderoAlbacora.setMap(mapa);
+      AmarraderoCorvinaB.setMap(mapa);
+      AmarraderoCorvina.setMap(mapa);
       setMarkers(mapa, plataformas);
       setMarcadores(mapa, tugs);
       infoVentana = new google.maps.InfoWindow({
@@ -67,6 +75,60 @@
       mapa.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
     }
+
+      // Define the LatLng coordinates for the polygon's path.
+  var AmarraderoAlbacoraCoords = [
+    new google.maps.LatLng(-3.418054, -80.590462),
+    new google.maps.LatLng(-3.415512, -80.589995),
+    new google.maps.LatLng(-3.414516, -80.588213),
+    new google.maps.LatLng(-3.413610, -80.585864),
+    new google.maps.LatLng(-3.415247, -80.585188),
+    new google.maps.LatLng(-3.415872, -80.587411),
+  ];
+
+    var AmarraderoCorvinaBCoords = [
+    new google.maps.LatLng(-3.591131, -80.747214),
+    new google.maps.LatLng(-3.588697, -80.745703),
+    new google.maps.LatLng(-3.588037, -80.747269),
+    new google.maps.LatLng(-3.590471, -80.748502),
+  ];
+
+    var AmarraderoCorvinaCoords = [
+    new google.maps.LatLng(-3.586989, -80.751051),
+    new google.maps.LatLng(-3.584799, -80.749836),
+    new google.maps.LatLng(-3.584022, -80.751340),
+    new google.maps.LatLng(-3.586302, -80.752419),
+  ];
+
+  // Construct the polygon.
+  AmarraderoAlbacora = new google.maps.Polygon({
+    paths: AmarraderoAlbacoraCoords,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+    // Construct the polygon.
+
+  AmarraderoCorvinaB = new google.maps.Polygon({
+    paths: AmarraderoCorvinaBCoords,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+
+    // Construct the polygon.
+  AmarraderoCorvina = new google.maps.Polygon({
+    paths: AmarraderoCorvinaCoords,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
 
     function crearZoom(controlDiv, map, nombre){
 
