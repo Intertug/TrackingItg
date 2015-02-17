@@ -70,7 +70,7 @@ def llenarMatriz(rows):
 			'latitud': coordenadaNorte,
 			'longitud': coordenadaSur,
 			'velocidad': rows[i][4],
-			'fechahora': rows[i][5],
+			'fechahora': rows[i][5][:4] + "-" + rows[i][5][4:6] + "-" + rows[i][5][6:8] + " " + rows[i][5][8:10] + ":" + rows[i][5][10:12] + ":" + rows[i][5][12:14] ,
 			})
 
 	return matriz
