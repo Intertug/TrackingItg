@@ -125,7 +125,7 @@
          <img id="img" src="http://i.imgur.com/EdgLrO6.jpg">
          <img id="flag" src="http://i.imgur.com/9oCr1Nf.gif">
          <!-- <figurecaption>
-            <p class="datos"> <span class="par">Nombre: Alisios</span> <span class="impar">Año: 2013</span> <span class="par">Bollard Poll: 65 Ton</span> <span class="impar">Velocidad: 12 Nudos</span></p>
+            <p class="datos"> <span class="par">Nombre: Alisios</span> <span class="impar">Año: 2013</span> <span class="par">Bollard Pull: 65 Ton</span> <span class="impar">Velocidad: 12 Nudos</span></p>
           </figurecaption>     -->
         </figure>
       </article>
@@ -296,7 +296,9 @@
     var imagenPropuesta = "http://s7.postimg.org/pz2ndrm9z/Offshore_Tower_Red.png?noCache=1422656982";
     var imagenMuelle = "http://i.imgur.com/OfPqcEL.png";
     var imageWaves = "http://s8.postimg.org/3u8drhhsx/Waves.png?noCache=14226573";
-      var AmarraderoAlbacora;
+    var imageBoya = "http://s17.postimg.org/qhedoohvf/boya2.png?noCache=1424120237";
+      var AmarraderoAlbacoraN;
+      var AmarraderoAlbacoraS;
   var AmarraderoCorvinaB;
   var AmarraderoCorvina;
 
@@ -367,7 +369,8 @@
           zIndex: 1,
         });
 
-      AmarraderoAlbacora.setMap(mapa);
+      AmarraderoAlbacoraN.setMap(mapa);
+      AmarraderoAlbacoraS.setMap(mapa);
       AmarraderoCorvinaB.setMap(mapa);
       AmarraderoCorvina.setMap(mapa);
         setMarkers(mapa, plataformas);
@@ -378,18 +381,21 @@
           content: ""
         });
       }
-
-// Define the LatLng coordinates for the polygon's path.
-  var AmarraderoAlbacoraCoords = [
+     // Define the LatLng coordinates for the polygon's path.
+  var AmarraderoAlbacoraSCoords = [
     new google.maps.LatLng(-3.418054, -80.590462),
-
     new google.maps.LatLng(-3.415512, -80.589995),
-
     new google.maps.LatLng(-3.414516, -80.588213),
+    //new google.maps.LatLng(-3.413610, -80.585864),
+    //new google.maps.LatLng(-3.415247, -80.585188),
+    new google.maps.LatLng(-3.415872, -80.587411),
+  ];
 
+  var AmarraderoAlbacoraNCoords = [
+    //new google.maps.LatLng(-3.418054, -80.590462),
+    //new google.maps.LatLng(-3.415512, -80.589995),
+    new google.maps.LatLng(-3.414516, -80.588213),
     new google.maps.LatLng(-3.413610, -80.585864),
-
-
     new google.maps.LatLng(-3.415247, -80.585188),
     new google.maps.LatLng(-3.415872, -80.587411),
   ];
@@ -409,13 +415,24 @@
   ];
 
   // Construct the polygon.
-  AmarraderoAlbacora = new google.maps.Polygon({
-    paths: AmarraderoAlbacoraCoords,
+  AmarraderoAlbacoraN = new google.maps.Polygon({
+    paths: AmarraderoAlbacoraNCoords,
     strokeColor: '#FF0000',
     strokeOpacity: 0.8,
     strokeWeight: 2,
     fillColor: '#FF0000',
-    fillOpacity: 0.35
+    fillOpacity: 0.35,
+    html: "<h4>Amarraderos Albacora Norte<br/>(Multiboyas para Buque Tanque)</h4>",
+  });
+
+  AmarraderoAlbacoraS = new google.maps.Polygon({
+    paths: AmarraderoAlbacoraSCoords,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35,
+    html: "<h4>Amarraderos Albacora Sur<br/>(Multiboyas para Buque Tanque)</h4>",
   });
     // Construct the polygon.
 
@@ -425,7 +442,8 @@
     strokeOpacity: 0.8,
     strokeWeight: 2,
     fillColor: '#FF0000',
-    fillOpacity: 0.35
+    fillOpacity: 0.35, 
+    html: "<h4>Amarradero N° 1 para Barcaza<br/>Área Corvina</h4>",
   });
 
     // Construct the polygon.
@@ -435,8 +453,60 @@
     strokeOpacity: 0.8,
     strokeWeight: 2,
     fillColor: '#FF0000',
-    fillOpacity: 0.35
+    fillOpacity: 0.35,
+    html: "<h4>Amarradero N° 1 para Buque Tanque<br/>Área Corvina</h4>",
   });
+
+  var infowindow = new google.maps.InfoWindow(
+   { 
+     size: new google.maps.Size(150,50)
+   });
+
+  google.maps.event.addListener(AmarraderoAlbacoraN,'click', function(event) {
+    var point = AmarraderoAlbacoraN.getPath().getAt(0);
+    infowindow.setContent(AmarraderoAlbacoraN.html);
+    if (event) {
+       point = event.latLng;
+    }
+    infowindow.setPosition(point);
+    infowindow.open(mapa);
+    // map.openInfoWindowHtml(point,html); 
+  }); 
+
+  google.maps.event.addListener(AmarraderoAlbacoraS,'click', function(event) {
+    var point = AmarraderoAlbacoraS.getPath().getAt(0);
+    infowindow.setContent(AmarraderoAlbacoraS.html);
+    if (event) {
+       point = event.latLng;
+    }
+    infowindow.setPosition(point);
+    infowindow.open(mapa);
+    // map.openInfoWindowHtml(point,html); 
+  });
+
+  google.maps.event.addListener(AmarraderoCorvina,'click', function(event) {
+    var point = AmarraderoCorvina.getPath().getAt(0);
+    infowindow.setContent(AmarraderoCorvina.html);
+    if (event) {
+       point = event.latLng;
+    }
+    infowindow.setPosition(point);
+    infowindow.open(mapa);
+    // map.openInfoWindowHtml(point,html); 
+  }); 
+
+    google.maps.event.addListener(AmarraderoCorvinaB,'click', function(event) {
+    var point = AmarraderoCorvinaB.getPath().getAt(0);
+    infowindow.setContent(AmarraderoCorvinaB.html);
+    if (event) {
+       point = event.latLng;
+    }
+    infowindow.setPosition(point);
+    infowindow.open(mapa);
+    // map.openInfoWindowHtml(point,html); 
+  }); 
+
+  
 
     var tugs = [
 
@@ -460,10 +530,13 @@
 
     var plataformas = [
 
-      ["existente", -3.59541666666, -80.73716666666667, 1, "CX11"],
-      ["existente", -3.60750, -80.73667, 1, "CX15"],
-      ["existente", -3.42000, -80.58362, 1, "Z1-8-A"],
-      ["muelle", -3.633691, -80.587355, 1, "Muelle La Cruz"],
+      ["existente", -3.59541666666, -80.73716666666667, 1, "<h3>CX11</h3>"],
+      ["existente", -3.60750, -80.73667, 1, "<h3>CX15</h3>"],
+      ["existente", -3.42000, -80.58362, 1, "<h3>Z1-8-A</h3>"],
+      ["muelle", -3.633691, -80.587355, 1, "<h3>Muelle La Cruz</h3>"],
+      ["boya", -3.414516, -80.588213, 1, "<h3>Amarraderos Albacora Norte  y Sur <br/>(Multiboyas para Buque Tanque)</h3>"],
+      ["boya", -3.588037, -80.747269, 1, "<h3>Amarradero N° 1 para  Barcaza <br/> Área Corvina</h3>"],
+      ["boya", -3.584022, -80.751340, 1, "<h3>Amarradero N° 1 para  Buque Tanque <br/> Área Corvina</h3>"],
       //["zona", -3.599067, -80.704733, 1, "Corvina Este-1X"],
       //["zona", -3.570900, -80.829583, 1, "Zona R"],
       //["zona", -3.540667, -80.853617, 1, "Z1-305"],
@@ -483,7 +556,7 @@
         var marcador = new google.maps.Marker({
           position: platLatLon,
           map: mapa,
-          icon: (plataformas[0] == "muelle" ? imagenMuelle : (plataformas[0] == "existente" ? imagenPlataforma : ( plataformas[0] == "zona"? imageWaves: imagenPropuesta))),
+          icon: (plataformas[0] == "muelle" ? imagenMuelle : (plataformas[0] == "existente" ? imagenPlataforma : ( plataformas[0] == "zona"? imageWaves: (plataformas[0] == "boya" ? imageBoya: imagenPropuesta)))),
           draggable: false,
           title: plataformas[0],
           zIndex: plataformas[3],
