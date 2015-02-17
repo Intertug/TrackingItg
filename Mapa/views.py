@@ -82,22 +82,22 @@ def getGps(request, nombre):
 	hoy2 = hoy + delta
 	hoy = hoy.isoformat()
 	hoy2 = hoy2.isoformat()
-	print hoy
-	print hoy2
+	#print hoy
+	#print hoy2
 
 	cursorGps = connection.cursor()
 
 	if 'fecha' in request.GET:
 		time = request.GET['fecha']
 		hoy = datetime.strptime(time, "%Y-%m-%d")
-		print time
-		print hoy
+		#print time
+		#print hoy
 		delta = timedelta(days=1)
 		hoy2 = hoy + delta
 		hoy = hoy.isoformat()[:10]
 		hoy2 = hoy2.isoformat()[:10]
-		print hoy
-		print hoy2
+		#print hoy
+		#print hoy2
 		#hora1 = request.GET['hora1']
 		#hora2 = request.GET['hora2']
 		#minutos1 = request.GET['minutos1']
@@ -125,7 +125,9 @@ def llenarMapa(nombre):
 	cursorAlisios.execute("select top 1 Latitude, LatitudeNS, Longitude, LongitudeEW, Speed, TimeString, vesselname from [2150-DAQOnBoardGps] where vesselname = '"+str(nombre)+"' order by TimeString desc;")
 	rowsA = cursorAlisios.fetchall()
 	matrizA =  llenarMatriz(rowsA)
-	loopAlisios = [matrizA[0]['latitud'], matrizA[0]['longitud'], matrizA[0]['velocidad'], matrizA[0]['fechahora']]
+	fecha = matrizA[0]['fechahora']
+	fecha = fecha[:4] + "-" + fecha[4:6] + "-" + fecha[6:8] + " " + fecha[8:10] + ":" + fecha[10:12] + ":" + fecha[12:14] 
+	loopAlisios = [matrizA[0]['latitud'], matrizA[0]['longitud'], matrizA[0]['velocidad'], fecha]
 
 	return loopAlisios
 
