@@ -307,6 +307,7 @@
         var AmarraderoAlbacoraS;
   var AmarraderoCorvinaB;
   var AmarraderoCorvina;
+  var mapa;
 
       function inicial() {
         var opciones = {
@@ -330,7 +331,7 @@
           },
         };
 
-        var mapa = new google.maps.Map(document.getElementById('map-canvas'), opciones);
+        mapa = new google.maps.Map(document.getElementById('map-canvas'), opciones);
 
         var recorrido = [
 
