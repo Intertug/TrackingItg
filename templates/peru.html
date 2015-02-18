@@ -34,10 +34,10 @@
   var mapa;
 
   var puntos = {};
-puntos["cx11"] = {
-  center: new google.maps.LatLng(-3.595417, -80.737167),
-  html: "Zona de Fondeo Remolcadores - Lado Tierra CX11",
-};
+//puntos["cx11"] = {
+//  center: new google.maps.LatLng(-3.595417, -80.737167),
+//  html: "Zona de Fondeo Remolcadores - Lado Tierra CX11",
+//};
 puntos["cx15"] = {
   center: new google.maps.LatLng(-3.617833, -80.751183),
   html: "Zona de Fondeo Remolcadores - Lado Sur CX15",
@@ -91,7 +91,7 @@ for (var p in puntos) {
       fillOpacity: 0.35,
       map: mapa,
       center: puntos[p].center,
-      radius: 100
+      radius: 500
     };
     // Add the circle for this city to the map.
     circle = new google.maps.Circle(circleOptions);
