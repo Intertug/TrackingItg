@@ -84,17 +84,36 @@ var circle;
 
 for (var p in puntos) {
     var circleOptions = {
-      strokeColor: '#FF0088',
+      strokeColor: '#FF0000',
       strokeOpacity: 0.7,
       strokeWeight: 1,
-      fillColor: '#FF0088',
+      fillColor: '#FF0000',
       fillOpacity: 0.40,
       map: mapa,
       center: puntos[p].center,
-      radius: 1852
+      radius: 1852,
+      html: puntos[p].html
     };
     // Add the circle for this city to the map.
     circle = new google.maps.Circle(circleOptions);
+
+    var infowindow = new google.maps.InfoWindow(
+   { 
+     size: new google.maps.Size(150,50)
+   });
+
+
+  google.maps.event.addListener(circle,'click', function(event) {
+    var point = this.center;
+    infowindow.setContent(this.html);
+    if (event) {
+       point = event.latLng;
+    }
+    infowindow.setPosition(point);
+    infowindow.open(mapa);
+    // map.openInfoWindowHtml(point,html); 
+  }); 
+
   }
 
       AmarraderoAlbacoraN.setMap(mapa);
