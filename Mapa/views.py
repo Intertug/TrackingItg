@@ -5,7 +5,8 @@ from django.db import connection
 from datetime import datetime, timedelta, date
 from monthdelta import MonthDelta
 
-remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5}
+#agregar ids
+remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16}
 
 def getPropulsor(request, nom, lado):
 
@@ -159,6 +160,7 @@ def getColombia(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCarex = llenarMapa('CAREX')
+	loopCarex = llenarMapa('ODIN')
 
 	return render_to_response('colombia.html', locals())
 
@@ -276,24 +278,24 @@ def getBaruInti(request):
 
 	return render_to_response('baruinti.html', locals())
 
-# def getOdin(request):
+def getOdin(request):
 	
-# 	gps = getGps(request, 'odin')
+	gps = getGps(request, 'ODIN')
 
-# 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-# 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-# 	#rowsGenB = getGenerador(request,'mistral', 'portside')
-# 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
 	
-# 	matrizGps = gps
+	matrizGps = gps
 
-# 	loopOdin = []
+	loopOdin = []
 
-# 	for i in range(len(matrizGps)):
-# 		if matrizGps[i]['rm'] == 'odin':
-# 			loopOdin.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'ODIN':
+			loopOdin.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
-# 	return render_to_response('odin.html', locals())
+	return render_to_response('odin.html', locals())
 
 def getVali(request):
 	

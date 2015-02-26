@@ -91,11 +91,15 @@
       //agregar remolcador = new google.maps.LatLng(tugs[n][1], tugs[n][2]);
 
       carex = new google.maps.LatLng(tugs[0][1], tugs[0][2]);
+      odin = new google.maps.LatLng(tugs[0][1], tugs[0][2]);
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
 
         if(nombre == 'Carex'){
           map.setCenter(carex);
+        }
+        else if(nombre == 'Odin'){
+          map.setCenter(odin);
         }
         map.setZoom(11)
       });
@@ -106,6 +110,7 @@
 
       // crearZoom(controlDiv, map, 'Remolcador');
       crearZoom(controlDiv, map, 'Carex');  
+      crearZoom(controlDiv, map, 'Odin'); 
     }
 
 
@@ -116,6 +121,7 @@
       ["Remolcador", {{loopRemolcador.0}}, {{loopRemolcador.1}}, 1, "Nombre: <strong>Remolcador</strong> <br/> Fecha: {{loopRemolcador.3}} <br/> Velocidad: {{loopRemolcador.2}} Nudos"],
       */
       ["Carex", {{loopCarex.0}}, {{loopCarex.1}}, 4, "Nombre: <strong>Carex</strong> <br/> Fecha: {{loopCarex.3}} <br/> Velocidad:  {{loopCarex.2}} Nudos"],
+        ["Odin", {{loopOdin.0}}, {{loopOdin.1}}, 4, "Nombre: <strong>Odin</strong> <br/> Fecha: {{loopOdin.3}} <br/> Velocidad:  {{loopOdin.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -182,6 +188,9 @@
           */
           if (this.title == "Carex"){
             window.location = "carex";            
+          }
+          else if (this.title == "Odin"){
+            window.location = "odin";            
           }
         });
 
