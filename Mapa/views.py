@@ -160,7 +160,7 @@ def getColombia(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCarex = llenarMapa('CAREX')
-	loopCarex = llenarMapa('ODIN')
+	loopOdin = llenarMapa('ODIN')
 
 	return render_to_response('colombia.html', locals())
 
