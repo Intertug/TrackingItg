@@ -29,19 +29,21 @@ def getPropulsor(nom):
 
 	return rowsPropB
 
-def getGenerador(request, nom, lado):
+def getGenerador(nom):
 
 	cursor = connection.cursor()
 
-	if 'fecha' in request.GET:
-		fecha = request.GET['fecha']
-		hora1 = request.GET['hora1']
-		hora2 = request.GET['hora2']
-		minutos1 = request.GET['minutos1']
-		minutos2 = request.GET['minutos2']
-		cursor.execute("select fechahora, totalhours, triphours, startcounter, rpmmeter, ch1, ch2, ch3, ch4, ch5, batteryvoltage from generador where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(nom) + "' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
-	else:
-		cursor.execute("select fechahora, totalhours, triphours, startcounter, rpmmeter, ch1, ch2, ch3, ch4, ch5, batteryvoltage from generador where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
+	cursor.execute("select DataValue from [2160-DAQOnBoardData] where TimeString in (Select top 1 TimeString from [2160-DAQOnBoardData] where vesselname = '"+str(nom)+"' order by TimeString DESC) and (DataCode = 'GEP001' or DataCode = 'GES001' or DataCode = 'GEP002' or DataCode = 'GES002' or DataCode = 'GEP000' or DataCode = 'GES000' or DataCode = 'GEP003' or DataCode = 'GES003') order by DataCode desc;")
+
+	# if 'fecha' in request.GET:
+	# 	fecha = request.GET['fecha']
+	# 	hora1 = request.GET['hora1']
+	# 	hora2 = request.GET['hora2']
+	# 	minutos1 = request.GET['minutos1']
+	# 	minutos2 = request.GET['minutos2']
+	# 	cursor.execute("select fechahora, totalhours, triphours, startcounter, rpmmeter, ch1, ch2, ch3, ch4, ch5, batteryvoltage from generador where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(nom) + "' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
+	# else:
+	# 	cursor.execute("select fechahora, totalhours, triphours, startcounter, rpmmeter, ch1, ch2, ch3, ch4, ch5, batteryvoltage from generador where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
 	#cursor.execute("select fechahora, totalhours, triphours, startcounter, rpmmeter, ch1, ch2, ch3, ch4, ch5, batteryvoltage from generador where rm = '"+ str(nom) +"' and side='portside' and (fechahora > '2014-05-19 02:25:00' and fechahora < '2014-05-19 02:26:00');")
 	
 	rows = cursor.fetchall()
@@ -249,7 +251,7 @@ def getBarupacifico(request):
 
 	rowsProp = getPropulsor('BARU PACIFICO')
 	#rowsPropE = getPropulsor(request, 'barupacifico', 'starboard')
-	#rowsGenB = getGenerador(request,'barupacifico', 'portside')
+	rowsGen = getGenerador('BARU PACIFICO')
 	#rowsGenE = getGenerador(request,'barupacifico', 'starboard')
 	
 	matrizGps = gps
