@@ -8,20 +8,23 @@ from monthdelta import MonthDelta
 #agregar ids
 remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16}
 
-def getPropulsor(request, nom, lado):
+def getPropulsor(nom):
 
 	cursorPropB = connection.cursor()
 
-	if 'fecha' in request.GET:
-		fecha = request.GET['fecha']
-		hora1 = request.GET['hora1']
-		hora2 = request.GET['hora2']
-		minutos1 = request.GET['minutos1']
-		minutos2 = request.GET['minutos2']
-		cursorPropB.execute("select fechahora, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(nom) + "' and side='"+ str(lado) +"' order by fechahora desc limit 1;")			
-	else:
-		cursorPropB.execute("select fechahora, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
-	#cursorPropB.execute("select fechahora, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' and (fechahora > '2014-05-19 02:25:00' and fechahora < '2014-05-19 02:26:00');")
+	cursorPropB.execute("select DataValue from [2160-DAQOnBoardData] where TimeString in (Select top 1 TimeString from [2160-DAQOnBoardData] where vesselname = '"+str(nom)+"' order by TimeString DESC) and (DataCode = 'PRP001' or DataCode = 'PRS001' or DataCode = 'PRP002' or DataCode = 'PRS002' or DataCode = 'PRP000' or DataCode = 'PRS000') order by DataCode desc;")
+
+	# if 'fecha' in request.GET:
+	# 	fecha = request.GET['fecha']
+	# 	hora1 = request.GET['hora1']
+	# 	hora2 = request.GET['hora2']
+	# 	minutos1 = request.GET['minutos1']
+	# 	minutos2 = request.GET['minutos2']
+	# 	cursorPropB.execute("select fechahora, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where (fechahora between '" + str(fecha) + " " + str(hora1) + ":" + str(minutos1) + "' and '" + str(fecha) + " " + str(hora2) + ":" + str(minutos2) + "') and rm ='" + str(nom) + "' and side='"+ str(lado) +"' order by fechahora desc limit 1;")			
+	# else:
+	# 	cursorPropB.execute("select timestring, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
+	# 	#cursorPropB.execute("select fechahora, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' order by fechahora desc limit 1;")
+	# #cursorPropB.execute("select fechahora, totalhours, totalfuel, enginespeed, percentload, fuelrate, coolanttemperature, oiltemperature, oilpressure, intercoolertemperature from propulsor where rm = '"+ str(nom) +"' and side='"+ str(lado) +"' and (fechahora > '2014-05-19 02:25:00' and fechahora < '2014-05-19 02:26:00');")
 	rowsPropB = cursorPropB.fetchall()
 
 	return rowsPropB
@@ -244,7 +247,7 @@ def getBarupacifico(request):
 	
 	gps = getGps(request, 'BARU PACIFICO')
 
-	#rowsPropB = getPropulsor(request, 'barupacifico', 'portside')
+	rowsProp = getPropulsor('BARU PACIFICO')
 	#rowsPropE = getPropulsor(request, 'barupacifico', 'starboard')
 	#rowsGenB = getGenerador(request,'barupacifico', 'portside')
 	#rowsGenE = getGenerador(request,'barupacifico', 'starboard')
