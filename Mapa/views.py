@@ -12,7 +12,7 @@ def getPropulsor(nom):
 
 	cursorPropB = connection.cursor()
 
-	cursorPropB.execute("select DataValue from [2160-DAQOnBoardData] where TimeString in (Select top 1 TimeString from [2160-DAQOnBoardData] where vesselname = '"+str(nom)+"' order by TimeString DESC) and (DataCode = 'PRP001' or DataCode = 'PRS001' or DataCode = 'PRP002' or DataCode = 'PRS002' or DataCode = 'PRP000' or DataCode = 'PRS000') order by DataCode desc;")
+	cursorPropB.execute("select DataValue from [2160-DAQOnBoardData] where TimeString in (Select top 1 TimeString from [2160-DAQOnBoardData] where vesselname = '"+str(nom)+"' order by TimeString DESC) and (DataCode = 'PRP001' or DataCode = 'PRS001' or DataCode = 'PRP002' or DataCode = 'PRS002' or DataCode = 'PRP000' or DataCode = 'PRS000' or DataCode = 'PRP003' or DataCode = 'PRS003') order by DataCode desc;")
 
 	# if 'fecha' in request.GET:
 	# 	fecha = request.GET['fecha']
