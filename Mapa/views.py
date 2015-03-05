@@ -268,9 +268,9 @@ def getBaruInti(request):
 	
 	gps = getGps(request, 'BARU INTI')
 
-	#rowsPropB = getPropulsor(request, 'baruinti', 'portside')
+	rowsProp = getPropulsor('BARU INTI')
 	#rowsPropE = getPropulsor(request, 'baruinti', 'starboard')
-	#rowsGenB = getGenerador(request,'baruinti', 'portside')
+	rowsGen = getGenerador('BARU INTI')
 	#rowsGenE = getGenerador(request,'baruinti', 'starboard')
 	
 	matrizGps = gps
@@ -306,9 +306,9 @@ def getVali(request):
 	
 	gps = getGps(request, 'VALI')
 
-	#rowsPropB = getPropulsor(request, 'vali', 'portside')
+	rowsProp = getPropulsor('VALI')
 	#rowsPropE = getPropulsor(request, 'vali', 'starboard')
-	#rowsGenB = getGenerador(request,'vali', 'portside')
+	rowsGen = getGenerador('VALI')
 	#rowsGenE = getGenerador(request,'vali', 'starboard')
 	
 	matrizGps = gps
@@ -515,9 +515,9 @@ def getMistral(request):
 	
 	gps = getGps(request, 'MISTRAL')
 
-	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	rowsProp = getPropulsor('MISTRAL')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	rowsGen = getGenerador('MISTRAL')
 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
 	
 	matrizGps = gps
