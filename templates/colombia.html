@@ -92,6 +92,8 @@
 
       carex = new google.maps.LatLng(tugs[0][1], tugs[0][2]);
       odin = new google.maps.LatLng(tugs[1][1], tugs[1][2]);
+      mara = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
+      apolo = new google.maps.LatLng(tugs[3][1], tugs[3][2]);
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
 
@@ -99,6 +101,12 @@
           map.setCenter(carex);
         }
         else if(nombre == 'Odin'){
+          map.setCenter(odin);
+        }
+        else if(nombre == 'Mara'){
+          map.setCenter(odin);
+        }
+        else if(nombre == 'Apolo'){
           map.setCenter(odin);
         }
         map.setZoom(11)
@@ -111,6 +119,8 @@
       // crearZoom(controlDiv, map, 'Remolcador');
       crearZoom(controlDiv, map, 'Carex');  
       crearZoom(controlDiv, map, 'Odin'); 
+      crearZoom(controlDiv, map, 'Mara');
+      crearZoom(controlDiv, map, 'Apolo');
     }
 
 
@@ -122,6 +132,8 @@
       */
       ["Carex", {{loopCarex.0}}, {{loopCarex.1}}, 4, "Nombre: <strong>Carex</strong> <br/> Fecha: {{loopCarex.3}} <br/> Velocidad:  {{loopCarex.2}} Nudos"],
         ["Odin", {{loopOdin.0}}, {{loopOdin.1}}, 4, "Nombre: <strong>Odin</strong> <br/> Fecha: {{loopOdin.3}} <br/> Velocidad:  {{loopOdin.2}} Nudos"],
+        ["Mara", {{loopMara.0}}, {{loopMara.1}}, 4, "Nombre: <strong>Mara</strong> <br/> Fecha: {{loopMara.3}} <br/> Velocidad:  {{loopMara.2}} Nudos"],
+        ["Apolo", {{loopApolo.0}}, {{loopApolo.1}}, 4, "Nombre: <strong>Apolo</strong> <br/> Fecha: {{loopApolo.3}} <br/> Velocidad:  {{loopApolo.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -191,6 +203,12 @@
           }
           else if (this.title == "Odin"){
             window.location = "odin";            
+          }
+          else if (this.title == "Mara"){
+            window.location = "mara";            
+          }
+          else if (this.title == "Apolo"){
+            window.location = "apolo";            
           }
         });
 

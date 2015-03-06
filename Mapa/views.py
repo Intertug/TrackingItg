@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, date
 from monthdelta import MonthDelta
 
 #agregar ids
-remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16}
+remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16, "Mara" : 13, "Apolo" : 8}
 
 def getPropulsor(nom):
 
@@ -166,6 +166,8 @@ def getColombia(request):
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCarex = llenarMapa('CAREX')
 	loopOdin = llenarMapa('ODIN')
+	loopMara = llenarMapa('MARA')
+	loopApolo = llenarMapa('APOLO')
 
 	return render_to_response('colombia.html', locals())
 
@@ -282,6 +284,44 @@ def getBaruInti(request):
 			loopBaruInti.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('baruinti.html', locals())
+
+def getMara(request):
+	
+	gps = getGps(request, 'MARA')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopMara = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'MARA':
+			loopMara.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('mara.html', locals())
+
+def getApolo(request):
+	
+	gps = getGps(request, 'APOLO')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopApolo = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'APOLO':
+			loopApolo.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('apolo.html', locals())
 
 def getOdin(request):
 	
