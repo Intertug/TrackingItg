@@ -168,6 +168,7 @@ def getColombia(request):
 	loopOdin = llenarMapa('ODIN')
 	loopMara = llenarMapa('MARA')
 	loopApolo = llenarMapa('APOLO')
+	loopChinook = llenarMapa('CHINOOK')
 
 	return render_to_response('colombia.html', locals())
 
@@ -230,7 +231,7 @@ def getCapidahl(request):
 
 def getChinook(request):
 	
-	gps = getGps(request, 'chinook')
+	gps = getGps(request, 'CHINOOK')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -242,7 +243,7 @@ def getChinook(request):
 	loopChinook = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'chinook':
+		if matrizGps[i]['rm'] == 'CHINOOK':
 			loopChinook.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('chinook.html', locals())
