@@ -94,6 +94,7 @@
       odin = new google.maps.LatLng(tugs[1][1], tugs[1][2]);
       mara = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
       apolo = new google.maps.LatLng(tugs[3][1], tugs[3][2]);
+      chinook = new google.maps.LatLng(tugs[4][1], tugs[4][2]);
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
 
@@ -109,6 +110,9 @@
         else if(nombre == 'Apolo'){
           map.setCenter(apolo);
         }
+        else if(nombre == 'Chinook'){
+          map.setCenter(chinook);
+        }
         map.setZoom(11)
       });
 
@@ -121,6 +125,7 @@
       crearZoom(controlDiv, map, 'Odin'); 
       crearZoom(controlDiv, map, 'Mara');
       crearZoom(controlDiv, map, 'Apolo');
+      crearZoom(controlDiv, map, 'Chinook');
     }
 
 
@@ -131,9 +136,10 @@
       ["Remolcador", {{loopRemolcador.0}}, {{loopRemolcador.1}}, 1, "Nombre: <strong>Remolcador</strong> <br/> Fecha: {{loopRemolcador.3}} <br/> Velocidad: {{loopRemolcador.2}} Nudos"],
       */
       ["Carex", {{loopCarex.0}}, {{loopCarex.1}}, 4, "Nombre: <strong>Carex</strong> <br/> Fecha: {{loopCarex.3}} <br/> Velocidad:  {{loopCarex.2}} Nudos"],
-        ["Odin", {{loopOdin.0}}, {{loopOdin.1}}, 4, "Nombre: <strong>Odin</strong> <br/> Fecha: {{loopOdin.3}} <br/> Velocidad:  {{loopOdin.2}} Nudos"],
-        ["Mara", {{loopMara.0}}, {{loopMara.1}}, 4, "Nombre: <strong>Mara</strong> <br/> Fecha: {{loopMara.3}} <br/> Velocidad:  {{loopMara.2}} Nudos"],
-        ["Apolo", {{loopApolo.0}}, {{loopApolo.1}}, 4, "Nombre: <strong>Apolo</strong> <br/> Fecha: {{loopApolo.3}} <br/> Velocidad:  {{loopApolo.2}} Nudos"],
+      ["Odin", {{loopOdin.0}}, {{loopOdin.1}}, 4, "Nombre: <strong>Odin</strong> <br/> Fecha: {{loopOdin.3}} <br/> Velocidad:  {{loopOdin.2}} Nudos"],
+      ["Mara", {{loopMara.0}}, {{loopMara.1}}, 4, "Nombre: <strong>Mara</strong> <br/> Fecha: {{loopMara.3}} <br/> Velocidad:  {{loopMara.2}} Nudos"],
+      ["Apolo", {{loopApolo.0}}, {{loopApolo.1}}, 4, "Nombre: <strong>Apolo</strong> <br/> Fecha: {{loopApolo.3}} <br/> Velocidad:  {{loopApolo.2}} Nudos"],
+      ["Chinook", {{loopChinook.0}}, {{loopChinook.1}}, 4, "Nombre: <strong>Chinook</strong> <br/> Fecha: {{loopChinook.3}} <br/> Velocidad:  {{loopChinook.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -209,6 +215,9 @@
           }
           else if (this.title == "Apolo"){
             window.location = "apolo";            
+          }
+          else if (this.title == "Chinook"){
+            window.location = "chinook";            
           }
         });
 
