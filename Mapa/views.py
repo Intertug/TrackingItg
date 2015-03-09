@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, date
 from monthdelta import MonthDelta
 
 #agregar ids
-remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16, "Mara" : 13, "Apolo" : 8}
+remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16, "Mara" : 13, "Apolo" : 8, "Chinook": 32}
 
 def getPropulsor(nom):
 
