@@ -95,6 +95,7 @@
       mara = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
       apolo = new google.maps.LatLng(tugs[3][1], tugs[3][2]);
       chinook = new google.maps.LatLng(tugs[4][1], tugs[4][2]);
+      alisios = new google.maps.LatLng(tugs[5][1], tugs[5][2]);
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
 
@@ -113,6 +114,9 @@
         else if(nombre == 'Chinook'){
           map.setCenter(chinook);
         }
+        else if(nombre == 'Alisios'){
+          map.setCenter(alisios);
+        }
         map.setZoom(11)
       });
 
@@ -121,11 +125,13 @@
     function HomeControl(controlDiv, map) {
 
       // crearZoom(controlDiv, map, 'Remolcador');
-      crearZoom(controlDiv, map, 'Carex');  
-      crearZoom(controlDiv, map, 'Odin'); 
-      crearZoom(controlDiv, map, 'Mara');
+      crearZoom(controlDiv, map, 'Alisios');
       crearZoom(controlDiv, map, 'Apolo');
-      crearZoom(controlDiv, map, 'Chinook');
+      crearZoom(controlDiv, map, 'Carex'); 
+      crearZoom(controlDiv, map, 'Chinook'); 
+      crearZoom(controlDiv, map, 'Mara');
+      crearZoom(controlDiv, map, 'Odin'); 
+      
     }
 
 
@@ -140,6 +146,7 @@
       ["Mara", {{loopMara.0}}, {{loopMara.1}}, 4, "Nombre: <strong>Mara</strong> <br/> Fecha: {{loopMara.3}} <br/> Velocidad:  {{loopMara.2}} Nudos"],
       ["Apolo", {{loopApolo.0}}, {{loopApolo.1}}, 4, "Nombre: <strong>Apolo</strong> <br/> Fecha: {{loopApolo.3}} <br/> Velocidad:  {{loopApolo.2}} Nudos"],
       ["Chinook", {{loopChinook.0}}, {{loopChinook.1}}, 4, "Nombre: <strong>Chinook</strong> <br/> Fecha: {{loopChinook.3}} <br/> Velocidad:  {{loopChinook.2}} Nudos"],
+      ["Alisios", {{loopAlisios.0}}, {{loopAlisios.1}}, 4, "Nombre: <strong>Alisios</strong> <br/> Fecha: {{loopAlisios.3}} <br/> Velocidad:  {{loopAlisios.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -218,6 +225,9 @@
           }
           else if (this.title == "Chinook"){
             window.location = "chinook";            
+          }
+          else if (this.title == "Alisios"){
+            window.location = "alisios";            
           }
         });
 

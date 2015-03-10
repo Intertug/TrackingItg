@@ -169,6 +169,7 @@ def getColombia(request):
 	loopMara = llenarMapa('MARA')
 	loopApolo = llenarMapa('APOLO')
 	loopChinook = llenarMapa('CHINOOK')
+	loopAlisios = llenarMapa('ALISIOS')
 
 	return render_to_response('colombia.html', locals())
 
@@ -612,11 +613,11 @@ def getEosii(request):
 
 def getAlisios(request):
 	
-	gps = getGps(request, 'alisios')
+	gps = getGps(request, 'ALISIOS')
 
-	rowsPropB = getPropulsor(request, 'alisios', 'portside')
-	rowsPropE = getPropulsor(request, 'alisios', 'starboard')
-	#rowsGenB = getGenerador(request,'alisios', 'portside')
+	rowsProp = getPropulsor('ALISIOS')
+	#rowsProp = getPropulsor(request, 'alisios', 'starboard')
+	rowsGen = getGenerador('ALISIOS')
 	#rowsGenE = getGenerador(request,'alisios', 'starboard')
 	
 	matriz = gps
@@ -624,7 +625,7 @@ def getAlisios(request):
 	loopAlisios = []
 
 	for i in range(len(matriz)):
-		if matriz[i]['rm'] == 'alisios':
+		if matriz[i]['rm'] == 'ALISIOS':
 			loopAlisios.append([matriz[i]['latitud'], matriz[i]['longitud'], matriz[i]['velocidad'], matriz[i]['fechahora']])	
 
 	return render_to_response('alisios.html', locals())
