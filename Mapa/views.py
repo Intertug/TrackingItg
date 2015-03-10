@@ -615,9 +615,9 @@ def getAlisios(request):
 	
 	gps = getGps(request, 'ALISIOS')
 
-	rowsProp = getPropulsor('ALISIOS')
+	#rowsProp = getPropulsor('ALISIOS')
 	#rowsProp = getPropulsor(request, 'alisios', 'starboard')
-	rowsGen = getGenerador('ALISIOS')
+	#rowsGen = getGenerador('ALISIOS')
 	#rowsGenE = getGenerador(request,'alisios', 'starboard')
 	
 	matriz = gps
