@@ -115,16 +115,16 @@ def getMapa(request):
 	loopMistral = llenarMapa('mistral')
 	loopSaga = llenarMapa('saga')
 	loopTitania = llenarMapa('titania')
-#	loopCristina = llenarMapa('cristina')
+	loopCristina = llenarMapa('cristina')
 	loopTanok = llenarMapa('tanok')
 	loopSeatrout = llenarMapa('seatrout')
 	loopKin = llenarMapa('kin')
 	loopChinook = llenarMapa('chinook')
-#	loopOdin = llenarMapa('odin')
+	loopOdin = llenarMapa('odin')
 	loopVali = llenarMapa('vali')
 	loopCarex = llenarMapa('carex')
 	loopAquavit = llenarMapa('aquavit')
-#	loopRan = llenarMapa('ran')
+	loopMara = llenarMapa('mara')
 	loopSirocco = llenarMapa('sirocco')
 	loopBarupacifico = llenarMapa('barupacifico')
 	loopBaruInti = llenarMapa('baruinti')
@@ -238,24 +238,43 @@ def getBaruInti(request):
 
 	return render_to_response('baruinti.html', locals())
 
-# def getOdin(request):
+def getOdin(request):
 	
-# 	gps = getGps(request, 'odin')
+	gps = getGps(request, 'odin')
 
-# 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-# 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-# 	#rowsGenB = getGenerador(request,'mistral', 'portside')
-# 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
 	
-# 	matrizGps = gps
+	matrizGps = gps
 
-# 	loopOdin = []
+	loopOdin = []
 
-# 	for i in range(len(matrizGps)):
-# 		if matrizGps[i]['rm'] == 'odin':
-# 			loopOdin.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'odin':
+			loopOdin.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
-# 	return render_to_response('odin.html', locals())
+	return render_to_response('odin.html', locals())
+
+def getMara(request):
+	
+	gps = getGps(request, 'mara')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopMara = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'mara':
+			loopMara.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('mara.html', locals())
 
 def getVali(request):
 	
@@ -352,24 +371,24 @@ def getSirocco(request):
 
 	return render_to_response('sirocco.html', locals())
 
-# def getCristina(request):
+def getCristina(request):
 	
-# 	gps = getGps(request, 'cristina')
+	gps = getGps(request, 'cristina')
 
-# 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-# 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-# 	#rowsGenB = getGenerador(request,'mistral', 'portside')
-# 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
 	
-# 	matrizGps = gps
+	matrizGps = gps
 
-# 	loopCristina = []
+	loopCristina = []
 
-# 	for i in range(len(matrizGps)):
-# 		if matrizGps[i]['rm'] == 'cristina':
-# 			loopCristina.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'cristina':
+			loopCristina.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
-# 	return render_to_response('cristina.html', locals())
+	return render_to_response('cristina.html', locals())
 
 def getTanok(request):
 	

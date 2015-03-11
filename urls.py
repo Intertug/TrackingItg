@@ -5,7 +5,7 @@ from django.conf.urls.defaults import patterns, include, url
 # admin.autodiscover()
 
 #Agregar ,getRmeolcador
-from Mapa.views import getPeru, getMapa, getBoreas, getEosii, getAlisios, getCapidahl, getMistral, getSaga, getTitania, getChinook, getSirocco, getAquavit, getCarex, getVali, getTanok, getSeatrout, getKin, getBarupacifico, getBaruInti #, getCristina, getOdin, getRan
+from Mapa.views import getPeru, getMapa, getBoreas, getEosii, getAlisios, getCapidahl, getMistral, getSaga, getTitania, getChinook, getSirocco, getAquavit, getCarex, getVali, getTanok, getSeatrout, getKin, getBarupacifico, getBaruInti , getCristina, getOdin, getMara
 
 urlpatterns = patterns('',
 
@@ -16,18 +16,18 @@ urlpatterns = patterns('',
     (r'^alisios$', getAlisios),
     (r'^capidahl$', getCapidahl),
     (r'^mistral$', getMistral),
-    #(r'^cristina$', getCristina),
+    (r'^cristina$', getCristina),
     (r'^tanok$', getTanok),
     (r'^seatrout$', getSeatrout),
     (r'^kin$', getKin),
     (r'^saga$', getSaga),
     (r'^titania$', getTitania),
-    #(r'^odin$', getOdin),
+    (r'^odin$', getOdin),
     (r'^vali$', getVali),
     (r'^carex$', getCarex),
     (r'^aquavit$', getAquavit),
     (r'^chinook$', getChinook),
-    #(r'^ran$', getRan),
+    (r'^mara$', getMara),
     (r'^sirocco$', getSirocco),
     (r'^barupacifico$', getBarupacifico),
     (r'^baruinti$', getBaruInti),
