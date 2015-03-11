@@ -275,10 +275,13 @@ for (var p in puntos) {
       kin = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
       barupacifico = new google.maps.LatLng(tugs[15][1], tugs[15][2]);
       baruinti = new google.maps.LatLng(tugs[16][1], tugs[16][2]);
+      odin = new google.maps.LatLng(tugs[17][1], tugs[17][2]);
+      mara = new google.maps.LatLng(tugs[18][1], tugs[18][2]);
+      cristina = new google.maps.LatLng(tugs[19][1], tugs[19][2]);
       /*
-      odin = new google.maps.LatLng(tugs[8][1], tugs[8][2]);
+      
       ran = new google.maps.LatLng(tugs[12][1], tugs[12][2]);
-      cristina = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
+      
       */
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -339,15 +342,19 @@ for (var p in puntos) {
         else if(nombre == 'BaruInti'){
           map.setCenter(baruinti);
         }
-        /*
         else if(nombre == 'Odin'){
           map.setCenter(odin);
         }
-        else if(nombre == 'Ran'){
-          map.setCenter(ran);
+        else if(nombre == 'Mara'){
+          map.setCenter(mara);
         }
         else if(nombre == 'Cristina'){
           map.setCenter(cristina);
+        }
+        /*
+
+        else if(nombre == 'Ran'){
+          map.setCenter(ran);
         }
         */
         map.setZoom(11)
@@ -407,10 +414,13 @@ for (var p in puntos) {
       ["Kin", {{loopKin.0}}, {{loopKin.1}}, 4, "Nombre: <strong>Kin</strong> <br/> Fecha: {{loopKin.3}} <br/> Velocidad:  {{loopKin.2}} Nudos"],
       ["BaruPacifico", {{loopBarupacifico.0}}, {{loopBarupacifico.1}}, 4, "Nombre: <strong>Barú Pacífico</strong> <br/> Fecha: {{loopBarupacifico.3}} <br/> Velocidad:  {{loopBarupacifico.2}} Nudos"],
       ["BaruInti", {{loopBaruInti.0}}, {{loopBaruInti.1}}, 4, "Nombre: <strong>Barú Inti</strong> <br/> Fecha: {{loopBaruInti.3}} <br/> Velocidad:  {{loopBaruInti.2}} Nudos"],
-      /*
       ["Odin", {{loopOdin.0}}, {{loopOdin.1}}, 4, "Nombre: <strong>Odin</strong> <br/> Fecha: {{loopOdin.3}} <br/> Velocidad:  {{loopOdin.2}} Nudos"],
+      ["Mara", {{loopMara.0}}, {{loopMara.1}}, 4, "Nombre: <strong>Mara</strong> <br/> Fecha: {{loopMara.3}} <br/> Velocidad:  {{loopMara.2}} Nudos"],   
+      ["Cristina", {{loopCristina.0}}, {{loopCristina.1}}, 4, "Nombre: <strong>Cristina</strong> <br/> Fecha: {{loopCristina.3}} <br/> Velocidad:  {{loopCristina.2}} Nudos"],   
+      /*
+
       ["Ran", {{loopRan.0}}, {{loopRan.1}}, 4, "Nombre: <strong>Ran</strong> <br/> Fecha: {{loopRan.3}} <br/> Velocidad:  {{loopRan.2}} Nudos"],
-      ["Cristina", {{loopCristina.0}}, {{loopCristina.1}}, 4, "Nombre: <strong>Cristina</strong> <br/> Fecha: {{loopCristina.3}} <br/> Velocidad:  {{loopCristina.2}} Nudos"],
+
             */
     ];
 
@@ -538,16 +548,21 @@ for (var p in puntos) {
           else if (this.title == "BaruInti"){
             window.location = "baruinti";            
           }
-          /*
           else if (this.title == "Odin"){
             window.location = "odin";            
           }
-          else if (this.title == "Ran"){
-            window.location = "ran";            
+          else if (this.title == "Mara"){
+            window.location = "mara";            
           }
           else if (this.title == "Cristina"){
             window.location = "cristina";            
           }
+          /*
+
+          else if (this.title == "Ran"){
+            window.location = "ran";            
+          }
+
 
           */
         });
