@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from Mapa.views import getMara, getApolo, getOdin, getColombia, getMexico, getPeru, getMapa, getBoreas, getEosii, getAlisios, getCapidahl, getMistral, getSaga, getTitania, getChinook, getSirocco, getAquavit, getCarex, getVali, getTanok, getSeatrout, getKin, getBarupacifico, getBaruInti #, getCristina, getOdin, getRan
+from Mapa.views import getMara, getApolo, getOdin, getColombia, getMexico, getPeru, getMapa, getBoreas, getEosii, getAlisios, getCapidahl, getMistral, getSaga, getTitania, getChinook, getSirocco, getAquavit, getCarex, getVali, getTanok, getSeatrout, getKin, getBarupacifico, getBaruInti , getCristina
 
 urlpatterns = patterns('',
     # Examples:
@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     (r'^alisios$', getAlisios),
     (r'^capidahl$', getCapidahl),
     (r'^mistral$', getMistral),
-    #(r'^cristina$', getCristina),
+    (r'^cristina$', getCristina),
     (r'^tanok$', getTanok),
     (r'^seatrout$', getSeatrout),
     (r'^kin$', getKin),

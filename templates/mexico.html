@@ -93,6 +93,7 @@
       seatrout = new google.maps.LatLng(tugs[0][1], tugs[0][2]);
       tanok = new google.maps.LatLng(tugs[1][1], tugs[1][2]);
       kin = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
+      cristina = new google.maps.LatLng(tugs[3][1], tugs[3][2]);
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
 
@@ -102,8 +103,11 @@
         else if(nombre == 'Tanok'){
           map.setCenter(tanok);
         }
-        else if(nombre == 'kin'){
+        else if(nombre == 'Kin'){
           map.setCenter(kin);
+        }
+        else if(nombre == 'Cristina'){
+          map.setCenter(cristina);
         }
         map.setZoom(11)
       });
@@ -113,6 +117,7 @@
     function HomeControl(controlDiv, map) {
 
       // crearZoom(controlDiv, map, 'Remolcador');
+      crearZoom(controlDiv, map, 'Cristina');
       crearZoom(controlDiv, map, 'Seatrout'); 
       crearZoom(controlDiv, map, 'Tanok'); 
       crearZoom(controlDiv, map, 'Kin');
@@ -128,6 +133,7 @@
       ["Seatrout", {{loopSeatrout.0}}, {{loopSeatrout.1}}, 4, "Nombre: <strong>Seatrout</strong> <br/> Fecha: {{loopSeatrout.3}} <br/> Velocidad:  {{loopSeatrout.2}} Nudos"],
       ["Tanok", {{loopTanok.0}}, {{loopTanok.1}}, 4, "Nombre: <strong>Tanok</strong> <br/> Fecha: {{loopTanok.3}} <br/> Velocidad:  {{loopTanok.2}} Nudos"],
       ["Kin", {{loopKin.0}}, {{loopKin.1}}, 4, "Nombre: <strong>Kin</strong> <br/> Fecha: {{loopKin.3}} <br/> Velocidad:  {{loopKin.2}} Nudos"],
+      ["Cristina", {{loopCristina.0}}, {{loopCristina.1}}, 4, "Nombre: <strong>Cristina</strong> <br/> Fecha: {{loopCristina.3}} <br/> Velocidad:  {{loopCristina.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -200,6 +206,9 @@
           }
           else if (this.title == "Kin"){
             window.location = "kin";            
+          }
+          else if (this.title == "Cristina"){
+            window.location = "cristina";            
           }
         });
 

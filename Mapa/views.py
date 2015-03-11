@@ -176,7 +176,7 @@ def getColombia(request):
 def getMexico(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
-
+	loopCristina = llenarMapa('CRISTINA')
 
 	return render_to_response('mexico.html', locals())
 
@@ -363,6 +363,25 @@ def getVali(request):
 
 	return render_to_response('vali.html', locals())
 
+def getCristina(request):
+	
+	gps = getGps(request, 'CRISTINA')
+
+	#rowsProp = getPropulsor('CRISTINA')
+	#rowsPropE = getPropulsor(request, 'vali', 'starboard')
+	#rowsGen = getGenerador('CRISTINA')
+	#rowsGenE = getGenerador(request,'vali', 'starboard')
+	
+	matrizGps = gps
+
+	loopCristina = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'CRISTINA':
+			loopCristina.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('cristina.html', locals())
+
 def getCarex(request):
 	
 	gps = getGps(request, 'CAREX')
@@ -438,25 +457,6 @@ def getSirocco(request):
 			loopSirocco.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('sirocco.html', locals())
-
-# def getCristina(request):
-	
-# 	gps = getGps(request, 'cristina')
-
-# 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-# 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-# 	#rowsGenB = getGenerador(request,'mistral', 'portside')
-# 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
-	
-# 	matrizGps = gps
-
-# 	loopCristina = []
-
-# 	for i in range(len(matrizGps)):
-# 		if matrizGps[i]['rm'] == 'cristina':
-# 			loopCristina.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
-
-# 	return render_to_response('cristina.html', locals())
 
 def getTanok(request):
 	
