@@ -170,6 +170,7 @@ def getColombia(request):
 	loopApolo = llenarMapa('APOLO')
 	loopChinook = llenarMapa('CHINOOK')
 	loopAlisios = llenarMapa('ALISIOS')
+	loopBahaireII = llenarMapa('BAHAIRE II')
 
 	return render_to_response('colombia.html', locals())
 
@@ -248,6 +249,25 @@ def getChinook(request):
 			loopChinook.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('chinook.html', locals())
+
+def getBahaireII(request):
+	
+	gps = getGps(request, 'BAHAIRE II')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopBahaireII = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'BAHAIRE II':
+			loopBahaireII.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('bahaireii.html', locals())
 
 def getBarupacifico(request):
 	
