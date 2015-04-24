@@ -171,6 +171,7 @@ def getColombia(request):
 	loopChinook = llenarMapa('CHINOOK')
 	loopAlisios = llenarMapa('ALISIOS')
 	loopBahaireII = llenarMapa('BAHAIRE II')
+	loopSirocco = llenarMapa('SIROCCO')
 
 	return render_to_response('colombia.html', locals())
 
@@ -461,7 +462,7 @@ def getAquavit(request):
 
 def getSirocco(request):
 	
-	gps = getGps(request, 'sirocco')
+	gps = getGps(request, 'SIROCCO')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -473,7 +474,7 @@ def getSirocco(request):
 	loopSirocco = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'sirocco':
+		if matrizGps[i]['rm'] == 'SIROCCO':
 			loopSirocco.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('sirocco.html', locals())

@@ -97,6 +97,7 @@
       chinook = new google.maps.LatLng(tugs[4][1], tugs[4][2]);
       alisios = new google.maps.LatLng(tugs[5][1], tugs[5][2]);
       bahaireii = new google.maps.LatLng(tugs[6][1], tugs[6][2]);
+      sirocco = new google.maps.LatLng(tugs[7][1], tugs[7][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -122,6 +123,9 @@
         else if(nombre == 'BahaireII'){
           map.setCenter(bahaireii);
         }
+        else if(nombre == 'Sirocco'){
+          map.setCenter(sirocco);
+        }
         map.setZoom(11)
       });
 
@@ -137,6 +141,7 @@
       crearZoom(controlDiv, map, 'Chinook'); 
       crearZoom(controlDiv, map, 'Mara');
       crearZoom(controlDiv, map, 'Odin'); 
+      crearZoom(controlDiv, map, 'Sirocco'); 
       
     }
 
@@ -154,6 +159,7 @@
       ["Chinook", {{loopChinook.0}}, {{loopChinook.1}}, 4, "Nombre: <strong>Chinook</strong> <br/> Fecha: {{loopChinook.3}} <br/> Velocidad:  {{loopChinook.2}} Nudos"],
       ["Alisios", {{loopAlisios.0}}, {{loopAlisios.1}}, 4, "Nombre: <strong>Alisios</strong> <br/> Fecha: {{loopAlisios.3}} <br/> Velocidad:  {{loopAlisios.2}} Nudos"],
       ["Bahaire II", {{loopBahaireII.0}}, {{loopBahaireII.1}}, 4, "Nombre: <strong>Bahaire II</strong> <br/> Fecha: {{loopBahaireII.3}} <br/> Velocidad:  {{loopBahaireII.2}} Nudos"],
+      ["Sirocco", {{loopSirocco.0}}, {{loopSirocco.1}}, 4, "Nombre: <strong>Sirocco</strong> <br/> Fecha: {{loopSirocco.3}} <br/> Velocidad:  {{loopSirocco.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -238,6 +244,9 @@
           }
           else if (this.title == "BahaireII"){
             window.location = "bahaireii";            
+          }
+          else if (this.title == "Sirocco"){
+            window.location = "sirocco";            
           }
         });
 
