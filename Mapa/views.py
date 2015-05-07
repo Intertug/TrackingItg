@@ -179,6 +179,7 @@ def getMexico(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCristina = llenarMapa('CRISTINA')
+	loopCristina = llenarMapa('KIN')
 
 	return render_to_response('mexico.html', locals())
 
@@ -519,7 +520,7 @@ def getSeatrout(request):
 
 def getKin(request):
 	
-	gps = getGps(request, 'kin')
+	gps = getGps(request, 'KIN')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -531,7 +532,7 @@ def getKin(request):
 	loopKin = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'kin':
+		if matrizGps[i]['rm'] == 'KIN':
 			loopKin.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('kin.html', locals())
