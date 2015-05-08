@@ -179,7 +179,7 @@ def getMexico(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCristina = llenarMapa('CRISTINA')
-	#loopKin = llenarMapa('KIN')
+	loopKin = llenarMapa('KIN')
 
 	return render_to_response('mexico.html', locals())
 
