@@ -170,8 +170,8 @@ def getColombia(request):
 	loopApolo = llenarMapa('APOLO')
 	loopChinook = llenarMapa('CHINOOK')
 	loopAlisios = llenarMapa('ALISIOS')
-	loopBahaireII = llenarMapa('BAHAIRE II')
-	loopSirocco = llenarMapa('SIROCCO')
+	#loopBahaireII = llenarMapa('BAHAIRE II')
+	#loopSirocco = llenarMapa('SIROCCO')
 
 	return render_to_response('colombia.html', locals())
 
@@ -179,7 +179,7 @@ def getMexico(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCristina = llenarMapa('CRISTINA')
-	loopKin = llenarMapa('KIN')
+	#loopKin = llenarMapa('KIN')
 
 	return render_to_response('mexico.html', locals())
 
