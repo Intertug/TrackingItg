@@ -180,6 +180,7 @@ def getMexico(request):
 	#agregar loopRemolcador = llenarMapa('remolcador')
 	loopCristina = llenarMapa('CRISTINA')
 	loopKin = llenarMapa('KIN')
+	loopTanok = llenarMapa('TANOK')
 
 	return render_to_response('mexico.html', locals())
 
@@ -482,7 +483,7 @@ def getSirocco(request):
 
 def getTanok(request):
 	
-	gps = getGps(request, 'tanok')
+	gps = getGps(request, 'TANOK')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -494,7 +495,7 @@ def getTanok(request):
 	loopTanok = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'tanok':
+		if matrizGps[i]['rm'] == 'TANOK':
 			loopTanok.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('tanok.html', locals())
