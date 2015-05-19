@@ -679,15 +679,15 @@ def getAlisios(request):
 def posicion(request):
 
 	barcos = ('CAREX',)# 'ODIN', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
-	matriz = []
-	data = {}
+	matriz = llenarMapa(barcos[0])
+	#data = {}
 
-	for b in barcos:
-		matriz.append(llenarMapa(b))
+	#for b in barcos:
+	#	matriz.append(llenarMapa(b))
 
 
 	data = {
-    "clusterGrid": "60",
+    "clusterGrid": 60,
     "vessels": [
 	        {
 	            "veseelID": 23,
