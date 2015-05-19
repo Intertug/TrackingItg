@@ -678,7 +678,7 @@ def getAlisios(request):
 
 def posicion(request):
 
-	barcos = ('CAREX',)# 'ODIN', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
+	barcos = ('ODIN',)# 'CAREX', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
 	matriz = llenarMapa(barcos[0])
 	#data = {}
 
@@ -693,13 +693,13 @@ def posicion(request):
 	            "veseelID": 23,
 	            "position": {
 	                "value": {
-	                    "lat": matriz[0][0],
-	                    "lon": matriz[0][1]
+	                    "lat": matriz[0],
+	                    "lon": matriz[1]
 	                },
 	                "label": "Posicion"
 	            },
 	            "speed": {
-	                "value": matriz[0][2],
+	                "value": matriz[2],
 	                "label": "Velocidad"
 	            },
 	            "engine": [
