@@ -170,6 +170,7 @@ def getColombia(request):
 	loopApolo = llenarMapa('APOLO')
 	loopChinook = llenarMapa('CHINOOK')
 	loopAlisios = llenarMapa('ALISIOS')
+	loopDonLucho = llenarMapa('DON LUCHO')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
@@ -328,6 +329,25 @@ def getMara(request):
 			loopMara.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('mara.html', locals())
+
+def getDonLucho(request):
+	
+	gps = getGps(request, 'DON LUCHO')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopDonLucho = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'DON LUCHO':
+			loopDonLucho.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('donlucho.html', locals())
 
 def getApolo(request):
 	
