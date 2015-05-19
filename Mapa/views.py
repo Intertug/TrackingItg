@@ -690,16 +690,16 @@ def posicion(request):
     "clusterGrid": "60",
     "vessels": [
 	        {
-	            "veseelID": matriz,
+	            "veseelID": 23,
 	            "position": {
 	                "value": {
-	                    "lat": -3.64152483333,
-	                    "lon": -80.7135416667
+	                    "lat": matriz[0][0],
+	                    "lon": matriz[0][1]
 	                },
 	                "label": "Posicion"
 	            },
 	            "speed": {
-	                "value": 4.5,
+	                "value": matriz[0][2],
 	                "label": "Velocidad"
 	            },
 	            "engine": [
