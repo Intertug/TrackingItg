@@ -687,7 +687,7 @@ def API1(request):
 	                    "lat": -3.64152483333,
 	                    "lon": -80.7135416667
 	                },
-	                "label": "Posición"
+	                "label": "Posicion"
 	            },
 	            "speed": {
 	                "value": 4.5,
@@ -708,11 +708,11 @@ def API1(request):
 	                    },
 	                    "maxrpm": {
 	                        "value": 1200,
-	                        "label": "RPM Máximo"
+	                        "label": "RPM Maximo"
 	                    },
 	                    "maxfuelrate": {
 	                        "value": 201,
-	                        "label": "Máximo consumo por hora"
+	                        "label": "Maximo consumo por hora"
 	                    }
 	                }
 	            ]
