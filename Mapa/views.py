@@ -676,7 +676,15 @@ def getAlisios(request):
 	return render_to_response('alisios.html', locals())
 # Create your views here.
 
-def API1(request):
+def posicion(request):
+
+	barcos = ('CAREX', 'ODIN', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
+	matriz = []
+	data = {}
+
+	for b in barcos:
+		matriz.append(llenarMapa(b))
+
 
 	data = {
     "clusterGrid": "60",
@@ -685,13 +693,13 @@ def API1(request):
 	            "veseelID": 23,
 	            "position": {
 	                "value": {
-	                    "lat": -3.64152483333,
-	                    "lon": -80.7135416667
+	                    "lat": matriz[1]['latitud'],
+	                    "lon": matriz[1]['longitud']
 	                },
 	                "label": "Posicion"
 	            },
 	            "speed": {
-	                "value": 4.5,
+	                "value": matriz[1]['velocidad'],
 	                "label": "Velocidad"
 	            },
 	            "engine": [
