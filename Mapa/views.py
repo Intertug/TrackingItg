@@ -4,6 +4,7 @@ from Mapa.models import *
 from django.db import connection
 from datetime import datetime, timedelta, date
 from monthdelta import MonthDelta
+from django.http import HttpResponse
 
 #agregar ids
 remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16, "Mara" : 13, "Apolo" : 8, "Chinook": 32}
@@ -673,3 +674,52 @@ def getAlisios(request):
 
 	return render_to_response('alisios.html', locals())
 # Create your views here.
+
+def API1(request):
+
+	data = {
+    "clusterGrid": "60",
+    "vessels": [
+	        {
+	            "veseelID": 23,
+	            "position": {
+	                "value": {
+	                    "lat": -3.64152483333,
+	                    "lon": -80.7135416667
+	                },
+	                "label": "Posición"
+	            },
+	            "speed": {
+	                "value": 4.5,
+	                "label": "Velocidad"
+	            },
+	            "engine": [
+	                {
+	                    "type": "propulsion",
+	                    "code": "FR54",
+	                    "location": "center",
+	                    "dayhours": {
+	                        "value": 82,
+	                        "label": "Horas de uso"
+	                    },
+	                    "dayfuel": {
+	                        "value": 200,
+	                        "label": "Combustible consumido"
+	                    },
+	                    "maxrpm": {
+	                        "value": 1200,
+	                        "label": "RPM Máximo"
+	                    },
+	                    "maxfuelrate": {
+	                        "value": 201,
+	                        "label": "Máximo consumo por hora"
+	                    }
+	                }
+	            ]
+	        }
+	    ]
+	}
+
+	json = json.dumps(data)
+
+	return HttpResponse(json, content_type='application/json')
