@@ -720,6 +720,6 @@ def API1(request):
 	    ]
 	}
 
-	json = json.dumps(data)
+	json_data = json.dumps(data)
 
-	return HttpResponse(json, content_type='application/json')
+	return HttpResponse(json_data, content_type='application/json')
