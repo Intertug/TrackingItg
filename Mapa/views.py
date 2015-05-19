@@ -678,7 +678,7 @@ def getAlisios(request):
 
 def posicion(request):
 
-	barcos = ('CAREX', 'ODIN', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
+	barcos = ('CAREX',)# 'ODIN', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
 	matriz = []
 	data = {}
 
@@ -690,16 +690,16 @@ def posicion(request):
     "clusterGrid": "60",
     "vessels": [
 	        {
-	            "veseelID": 23,
+	            "veseelID": matriz,
 	            "position": {
 	                "value": {
-	                    "lat": matriz[1]['latitud'],
-	                    "lon": matriz[1]['longitud']
+	                    "lat": -3.64152483333,
+	                    "lon": -80.7135416667
 	                },
 	                "label": "Posicion"
 	            },
 	            "speed": {
-	                "value": matriz[1]['velocidad'],
+	                "value": 4.5,
 	                "label": "Velocidad"
 	            },
 	            "engine": [
