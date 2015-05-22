@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <meta http-equiv="Refresh" content="120">
+    <title>Tracking Intertug: Frey</title>
+    <style>
+      html, body, #map-canvas {
+        font-size: 16px;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+      figure{
+        width: 100%;
+        margin: 0;
+      }
+      .bold{
+        font-weight: bold;
+      }
+      #img{
+        width: 100%;
+        height: 95%;
+        margin: 0;
+        border-radius: 4px;
+      }
+      #flag{
+        width: 100%;
+        height: 20px;
+        margin: 0;
+        border-radius: 4px;
+      }
+      .tit{
+        font-weight: bold;
+        text-align: center;
+        color: white;
+      }
+      #menu{
+        background: #FFCA08;
+        color: black;
+        float: right;
+        font-size: 1.01em;
+        font-style: sans-serif;
+        height: 100%;
+        overflow: auto;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 33%;
+        border-radius: 5px;
+        margin: 0;
+      }
+      table{
+        margin: 0.3em;
+        color: white;
+
+      }
+      .datos{
+        margin: 0.5em;
+        border-radius: 3px;
+        color: white;
+        font-size: 0.9em;
+        text-align: center;
+        background-color: #0000AA;
+      }
+      .par{
+        background-color: #000080;
+        margin: 0 0.3em;
+      }
+      .impar{
+        background-color: #0000FF;
+        margin: 0 0.3em;
+        }
+      tr{
+        /* Todas las filas blancas */
+        background-color: #000080;
+      }
+      tr:nth-child(2n+1){
+        /* Filas impares grises */
+        background-color: #0000AA;
+      }
+      tr:hover{
+        /* Filas celeste al pasar el mouse */
+        background-color: #FFCA08;
+      }
+      article{
+        margin: 0.5em;
+        border-bottom: 0.1em solid gray;
+        font-size: 0.9em;
+      }
+      #atras{
+        font-size: 1em;
+        color: white;
+        background: #0000AA;
+        padding: 0.3em;
+        border-radius: 10px;
+        float: left;
+        margin: 0.3em;
+        text-decoration: none;
+      }
+      #hoy{
+        font-size: 1em;
+        color: white;
+        background: #0000AA;
+        padding: 0.3em;
+        border-radius: 10px;
+        float: right;
+        margin: 0.3em;
+        text-decoration: none;
+      }
+
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&sensor=false&language=es"></script>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+
+    <section id="menu">
+      <article>
+        <a id="atras" href="/">Flota</a>
+        <a id="atras" href="/colombia">Flota Colombia</a>
+        <a id="hoy" href="/carex">Hoy</a>
+        <!--<figure>
+          <img id="img" src="http://i.imgur.com/6oxQ77Y.jpg">
+          <img id="flag" src="http://i.imgur.com/9oCr1Nf.gif">
+          <figurecaption>
+            <p class="datos"> <span class="par">Nombre: Carex</span> <span class="impar">Año: 1995</span> <span class="par">Bollard Poll: 19 Ton</span> <span class="impar">Velocidad: 10 Nudos</span></p>
+          </figurecaption>         
+        </figure> -->
+      </article>
+<!--       <article>
+      <h3 class="tit">Propulsión</h3>
+      <table>
+        <tr class="bold">
+          <td>Datos</td>
+          <td>Babor</td>
+          <td>Estribor</td>
+          <td>Unidades</td>
+        </tr>
+        <tr>
+          <td class="bold">Date</td>
+          <td>{{rowsPropB.0.0}}</td>
+          <td>{{rowsPropE.0.0}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="bold">Total Hours</td>
+          <td>{{rowsPropB.0.1}}</td>
+          <td>{{rowsPropE.0.1}}</td>
+          <td>Horas</td>
+        </tr>
+        <tr>
+          <td class="bold">Total Fuel</td>
+          <td>{{rowsPropB.0.2}}</td>
+          <td>{{rowsPropE.0.2}}</td>
+          <td>Litros</td>
+        </tr>
+        <tr>
+          <td class="bold">Engine Speed</td>
+          <td>{{rowsPropB.0.3}}</td>
+          <td>{{rowsPropE.0.3}}</td>
+          <td>RPM</td>
+        </tr>
+        <tr>
+          <td class="bold">Percent Load</td>
+          <td>{{rowsPropB.0.4}}</td>
+          <td>{{rowsPropE.0.4}}</td>
+          <td>%</td>
+        </tr>
+        <tr>
+          <td class="bold">Fuel rate</td>
+          <td>{{rowsPropB.0.5}}</td>
+          <td>{{rowsPropE.0.5}}</td>
+          <td>L/H</td>
+        </tr>
+        <tr>
+          <td class="bold">Coolant Temp</td>
+          <td>{{rowsPropB.0.6}}</td>
+          <td>{{rowsPropE.0.6}}</td>
+          <td>°C</td>
+        </tr>
+        <tr>
+          <td class="bold">Oil Temp</td>
+          <td>{{rowsPropB.0.7}}</td>
+          <td>{{rowsPropE.0.7}}</td>
+          <td>°C</td>
+        </tr>
+        <tr>
+          <td class="bold">Oil Pressure</td>
+          <td>{{rowsPropB.0.8}}</td>
+          <td>{{rowsPropE.0.8}}</td>
+          <td>KPa</td>
+        </tr>
+        <tr>
+          <td class="bold">Intercooler Temp</td>
+          <td>{{rowsPropB.0.9}}</td>
+          <td>{{rowsPropE.0.9}}</td>
+          <td>°C</td>
+        </tr>
+      </table>
+      </article>
+      <article>
+      <h3 class="tit">Generación</h3>
+      <table>
+        <tr class="bold">
+          <td>Datos</td>
+          <td>Babor</td>
+          <td>Estribor</td>
+          <td>Unidades</td>
+        </tr>
+        <tr>
+          <td class="bold">Date</td>
+          <td>{{rowsGenB.0.0}}</td>
+          <td>{{rowsGenE.0.0}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="bold">Tolal Hours</td>
+          <td>{{rowsGenB.0.1}}</td>
+          <td>{{rowsGenE.0.1}}</td>
+          <td>Horas</td>
+        </tr>
+        <tr>
+          <td class="bold">Trip Hours</td>
+          <td>{{rowsGenB.0.2}}</td>
+          <td>{{rowsGenE.0.2}}</td>
+          <td>Horas</td>
+        </tr>
+        <tr>
+          <td class="bold">Start Counter</td>
+          <td>{{rowsGenB.0.3}}</td>
+          <td>{{rowsGenE.0.3}}</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="bold">RPM</td>
+          <td>{{rowsGenB.0.4}}</td>
+          <td>{{rowsGenE.0.4}}</td>
+          <td>RPM</td>
+        </tr>
+        <tr>
+          <td class="bold">Oil Pressure</td>
+          <td>{{rowsGenB.0.5}}</td>
+          <td>{{rowsGenE.0.5}}</td>
+          <td>Bar</td>
+        </tr>
+        <tr>
+          <td class="bold">HTC Outlet Temp</td>
+          <td>{{rowsGenB.0.6}}</td>
+          <td>{{rowsGenE.0.6}}</td>
+          <td>°C</td>
+        </tr>
+        <tr>
+          <td class="bold">Lube Oil Temp</td>
+          <td>{{rowsGenB.0.7}}</td>
+          <td>{{rowsGenE.0.7}}</td>
+          <td>°C</td>
+        </tr>
+        <tr>
+          <td class="bold">HTC Pressure</td>
+          <td>{{rowsGenB.0.8}}</td>
+          <td>{{rowsGenE.0.8}}</td>
+          <td>Bar</td>
+        </tr>
+        <tr>
+          <td class="bold">Fuel Pressure</td>
+          <td>{{rowsGenB.0.9}}</td>
+          <td>{{rowsGenE.0.9}}</td>
+          <td>Bar</td>
+        </tr>
+        <tr>
+          <td class="bold">Battery Volatge</td>
+          <td>{{rowsGenB.0.10}}</td>
+          <td>{{rowsGenE.0.10}}</td>
+          <td>V</td>
+        </tr>
+      </table>
+      </article> -->
+      <article class="form">
+        <h3 class="tit">Consulta</h3>
+        <form method="get">
+        <input type="date" name="fecha" value="" class="fecha" style='width:90%'/>
+        <input type="number" name="hora1" min="0" max="24" class="hora" value="00"/>:
+        <input type="number" name="minutos1" min="0" max="60" class="minuto" value="00"/> a
+        <input type="number" name="hora2" min="0" max="24" class="hora" value="23"/>:
+        <input type="number" name="minutos2" min="0" max="60" class="minuto" value="59"/>
+        <input type="submit" value="Consultar" id="consulta"/>
+
+        </form>
+      </article>
+    </section>
+
+    <script>
+
+      var image = "http://i.imgur.com/qqxD2uN.png"//"http://i.imgur.com/yoZQPZu.gif";
+
+      var infoVentana = null;
+
+      function inicial() {
+        var opciones = {
+          zoom: 12,
+          center: new google.maps.LatLng( {{loopFrey.0.0}} , {{loopFrey.0.1}} ),
+          mapTypeId: google.maps.MapTypeId.SATELLITE,
+          mapTypeControl: true,
+          streetViewControl: false,
+          mapTypeControlOptions:{
+            position: google.maps.ControlPosition.LEFT_TOP
+          },
+          zoomControlOptions: {
+            position: google.maps.ControlPosition.LEFT_CENTER
+          },
+          panControlOptions: {
+            position: google.maps.ControlPosition.LEFT_CENTER
+          },
+          scaleControl: true,
+          scaleControlOptions: {
+            position: google.maps.ControlPosition.BOTTOM_CENTER
+          },
+        };
+
+        var mapa = new google.maps.Map(document.getElementById('map-canvas'), opciones);
+
+        var recorrido = [
+
+          {% for i in loopFrey %}
+
+            new google.maps.LatLng({{i.0}},{{i.1}}),
+
+          {% endfor %}
+
+        ];
+
+        var flecha = {
+          path: google.maps.SymbolPath.FORWARD_OPEN_ARROW,
+          scale: 1.05,
+          strokeColor: '#11FB34'//'#11FB34'
+        };
+
+        var linea = new google.maps.Polyline({
+          path: recorrido,
+          map: mapa,
+          icons: [{
+            icon: flecha,
+            offset: '50%',
+            repeat: "20px"
+          }],
+          geodesic: true,
+          strokeColor: '#11FB34',//'#11FB34',
+          strokeOpacity: 1.0,
+          strokeWeight: 2
+        });
+
+        dato = recorrido.length;
+        var marcador = new google.maps.Marker({
+          position: new google.maps.LatLng(recorrido[dato - 1]['k'], recorrido[dato - 1]['A']),
+          map: mapa,
+          icon: image,
+          draggable: false,
+          title: "Frey",
+          zIndex: 1,
+        });
+
+        setMarcadores(mapa, tugs);
+        setUltimo(mapa, tugs);
+        infoVentana = new google.maps.InfoWindow({
+          content: ""
+        });
+      }
+
+    var tugs = [
+
+          {% for i in loopFrey %}
+
+            ["Frey", {{i.0}}, {{i.1}}, 2, "Nombre: <strong>Frey</strong> <br/> Posición: {{i.0}}, {{i.1}} <br/> Fecha: {{i.3}} <br/> Velocidad:  {{i.2}} Nudos"], 
+
+          {% endfor %}
+
+    ];
+
+    var alert = [
+
+          {% for i in loopFrey %}
+
+            {{i.2}}, 
+
+          {% endfor %}
+
+    ];
+
+    function setUltimo(mapa, markers){
+
+        var plataformas = markers[markers.length-1];
+        var platLatLon = new google.maps.LatLng(plataformas[1], plataformas[2]);
+        var marcador = new google.maps.Marker({
+          position: platLatLon,
+          map: mapa,
+          icon: image,
+          draggable: false,
+          title: plataformas[0],
+          zIndex: plataformas[3],
+          html: plataformas[4],
+        });
+
+        google.maps.event.addListener(marcador, "mouseover", function () {
+          infoVentana.setContent(this.html);
+          infoVentana.open(mapa, this);
+        });
+
+        google.maps.event.addListener(marcador, "mouseout", function () {
+          infoVentana.close();
+
+        });
+      
+    } 
+
+    function setMarcadores(mapa, marcadores) {
+
+      for (var i = 0; i < marcadores.length; i++) {
+
+        var tugs = marcadores[i];
+        var tugsLatLon = new google.maps.LatLng(tugs[1], tugs[2]);
+        var marcador = new google.maps.Marker({
+          position: tugsLatLon,
+          map: mapa,
+          icon:{
+            path: google.maps.SymbolPath.CIRCLE,
+            scale: 2,
+            strokeColor: ( alert[i] > 8 ? 'red' : '#11FB34')//'#11FB34' )
+          },
+          draggable: false,
+          title: tugs[0],
+          html: tugs[4],
+          zIndex: tugs[3],
+        });
+
+        google.maps.event.addListener(marcador, "mouseover", function () {
+          infoVentana.setContent(this.html);
+          infoVentana.open(mapa, this);
+        });
+
+        google.maps.event.addListener(marcador, "mouseout", function () {
+          infoVentana.close();
+
+        });
+      }
+    }
+
+
+    google.maps.event.addDomListener(window, 'load', inicial);
+
+    </script>
+  </body>
+</html>
