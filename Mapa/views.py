@@ -8,7 +8,7 @@ from django.http import HttpResponse
 import json
 
 #agregar ids
-remolcadores = {"Baru Inti": 34, "Baru Pacifico": 33, "Mistral": 28, "Vali": 23, "Carex": 5, "Odin": 16, "Mara" : 13, "Apolo" : 8, "Chinook": 32}
+remolcadores = {'ODIN':16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34,}
 
 def getPropulsor(nom):
 
