@@ -702,7 +702,7 @@ def posicion(request):
 	
 	for i in barcos:
 
-		matriz = llenarMapa(barcos[i])
+		matriz = llenarMapa(i)
 
 		data = {
 	    "clusterGrid": 60,
