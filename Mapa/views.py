@@ -700,14 +700,14 @@ def posicion(request):
 
 	barcos = ('ODIN', 'CAREX', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI',)
 	
+	data = {
+    "clusterGrid": 60,
+    "vessels": [],
+	}
+	
 	for i in range(len(barcos)):
 
 		matriz = llenarMapa(barcos[i])
-
-		data = {
-	    "clusterGrid": 60,
-	    "vessels": [],
-		}
 
 		vessels = [
 		        {
