@@ -706,6 +706,7 @@ def posicion(request):
 
 		data = {
 	    "clusterGrid": 60,
+	    "vessels": [],
 		}
 
 		vessels = [
