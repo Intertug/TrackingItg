@@ -778,10 +778,10 @@ def recorrido(request):
                     	"lat": gps[i]['latitud'],
                     	"lon": gps[i]['longitud']
                 	},
-                	"label": "Posición"
+                	"label": "Posicion"
             	},
             	"speed": {
-                	"value": gps[i]['volocidad'],
+                	"value": gps[i]['velocidad'],
                 	"label": "Velocidad"
             	},
             	"datetime": {
