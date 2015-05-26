@@ -748,7 +748,7 @@ def posicion(request):
 		        }
 		    ]
 
-		data.vessels += vessels
+		data['vessels'] += vessels
 
 	json_data = json.dumps(data)
 
