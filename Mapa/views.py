@@ -698,56 +698,57 @@ def getAlisios(request):
 
 def posicion(request):
 
-	barcos = ('ODIN',)# 'CAREX', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI')
-	matriz = llenarMapa(barcos[0])
-	#data = {}
+	barcos = ('ODIN', 'CAREX', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI',)
+	
+	for i in barcos:
 
-	#for b in barcos:
-	#	matriz.append(llenarMapa(b))
+		matriz = llenarMapa(barcos[i])
 
+		data = {
+	    "clusterGrid": 60,
+		}
 
-	data = {
-    "clusterGrid": 60,
-    "vessels": [
-	        {
-	            "veseelID": 23,
-	            "position": {
-	                "value": {
-	                    "lat": matriz[0],
-	                    "lon": matriz[1]
-	                },
-	                "label": "Posicion"
-	            },
-	            "speed": {
-	                "value": matriz[2],
-	                "label": "Velocidad"
-	            },
-	            "engine": [
-	                {
-	                    "type": "propulsion",
-	                    "code": "FR54",
-	                    "location": "center",
-	                    "dayhours": {
-	                        "value": 82,
-	                        "label": "Horas de uso"
-	                    },
-	                    "dayfuel": {
-	                        "value": 200,
-	                        "label": "Combustible consumido"
-	                    },
-	                    "maxrpm": {
-	                        "value": 1200,
-	                        "label": "RPM Maximo"
-	                    },
-	                    "maxfuelrate": {
-	                        "value": 201,
-	                        "label": "Maximo consumo por hora"
-	                    }
-	                }
-	            ]
-	        }
-	    ]
-	}
+		vessels = [
+		        {
+		            "veseelID": remolcadores[i],
+		            "position": {
+		                "value": {
+		                    "lat": matriz[0],
+		                    "lon": matriz[1]
+		                },
+		                "label": "Posicion"
+		            },
+		            "speed": {
+		                "value": matriz[2],
+		                "label": "Velocidad"
+		            },
+		            "engine": [
+		                {
+		                    "type": "propulsion",
+		                    "code": "FR54",
+		                    "location": "center",
+		                    "dayhours": {
+		                        "value": 82,
+		                        "label": "Horas de uso"
+		                    },
+		                    "dayfuel": {
+		                        "value": 200,
+		                        "label": "Combustible consumido"
+		                    },
+		                    "maxrpm": {
+		                        "value": 1200,
+		                        "label": "RPM Maximo"
+		                    },
+		                    "maxfuelrate": {
+		                        "value": 201,
+		                        "label": "Maximo consumo por hora"
+		                    }
+		                }
+		            ]
+		        }
+		    ]
+
+		data.vessels += vessels
 
 	json_data = json.dumps(data)
 
