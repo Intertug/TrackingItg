@@ -710,7 +710,7 @@ def posicion(request):
 
 		vessels = [
 		        {
-		            "veseelID": remolcadores[i],
+		            "veseelID": remolcadores[barcos[i]],
 		            "position": {
 		                "value": {
 		                    "lat": matriz[0],
