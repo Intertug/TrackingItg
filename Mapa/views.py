@@ -8,7 +8,8 @@ from django.http import HttpResponse
 import json
 
 #agregar ids
-remolcadores = {'ODIN':16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34,}
+remolcadores = {'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34,}
+#ids = { "16":'ODIN', :"10":'FREY', "5": 'CAREX', "13":'MARA', "8":'APOLO', "32":'CHINOOK', "29":'ALISIOS', "7":'DON LUCHO', "6" :'CRISTINA' , "27":'KIN', "26":'TANOK', "28":'MISTRAL', "23":'VALI', "33":'BARU PACIFICO', "34":'BARU INTI',}
 
 def getPropulsor(nom):
 
@@ -756,11 +757,13 @@ def posicion(request):
 	return HttpResponse(json_data, content_type='application/json')
 
 def recorrido(request):
-	
-	gps = getGps(request, request.GET["vessel"])
+
+	ids =  {v: k for k, v in remolcadores.items()}
+
+	gps = getGps(request, ids[request.GET["vessel"]])
 
 	data = {
-		"vesselID": remolcadores[str(request.GET["vessel"])],
+		"vesselID": request.GET["vessel"],
 		"coordenates" : [],
 	}
 	
