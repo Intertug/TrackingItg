@@ -760,7 +760,7 @@ def recorrido(request):
 	gps = getGps(request, request.GET["vessel"])
 
 	data = {
-		"vesselID": remolcadores[request.GET["vessel"]],
+		"vesselID": remolcadores[str(request.GET["vessel"])],
 		"coordenates" : [],
 	}
 	
