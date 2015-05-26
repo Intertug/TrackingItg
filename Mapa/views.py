@@ -704,7 +704,7 @@ def posicion(request):
     "clusterGrid": 60,
     "vessels": [],
 	}
-	
+
 	for i in range(len(barcos)):
 
 		matriz = llenarMapa(barcos[i])
@@ -750,6 +750,49 @@ def posicion(request):
 		    ]
 
 		data['vessels'] += vessels
+
+	json_data = json.dumps(data)
+
+	return HttpResponse(json_data, content_type='application/json')
+
+def recorrido(request):
+	
+	gps = getGps(request, request.GET["vessel"])
+
+	data = {
+		"vesselID": remolcadores[request.GET["vessel"]],
+		"coordenates" : [],
+	}
+	
+	for i in range(len(gps)):
+
+		alert = False
+		if gps[i]['velocidad'] > 8:
+			alert = True
+
+		point = [
+
+		    {
+            	"position": {
+                	"value": {
+                    	"lat": gps[i]['latitud'],
+                    	"lon": gps[i]['longitud']
+                	},
+                	"label": "Posición"
+            	},
+            	"speed": {
+                	"value": gps[i]['volocidad'],
+                	"label": "Velocidad"
+            	},
+            	"datetime": {
+                	"value": gps[i]['fechahora'],
+                	"label": "Fecha"
+            	},
+            	"alert": alert
+        	}
+		]
+
+		data["coordenates"] += point
 
 	json_data = json.dumps(data)
 
