@@ -660,19 +660,19 @@ def getBoreas(request):
 
 def getEosii(request):
 	
-	gps = getGps(request, 'eosii')
+	gps = getGps(request, 'EOS II')
 
-	rowsPropB = getPropulsor(request, 'eosii', 'portside')
-	rowsPropE = getPropulsor(request, 'eosii', 'starboard')
-	rowsGenB = getGenerador(request,'eosii', 'portside')
-	rowsGenE = getGenerador(request,'eosii', 'starboard')
+	#rowsPropB = getPropulsor(request, 'eosii', 'portside')
+	#rowsPropE = getPropulsor(request, 'eosii', 'starboard')
+	#rowsGenB = getGenerador(request,'eosii', 'portside')
+	#rowsGenE = getGenerador(request,'eosii', 'starboard')
 	
 	matrizGps = gps
 
 	loopEosii = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'eosii':
+		if matrizGps[i]['rm'] == 'EOS II':
 			loopEosii.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('eosii.html', locals())

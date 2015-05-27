@@ -100,6 +100,7 @@
       sirocco = new google.maps.LatLng(tugs[7][1], tugs[7][2]);
       donlucho = new google.maps.LatLng(tugs[8][1], tugs[8][2]);
       frey = new google.maps.LatLng(tugs[9][1], tugs[9][2]);
+      eosii = new google.maps.LatLng(tugs[10][1], tugs[10][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -134,6 +135,9 @@
         else if(nombre == 'Frey'){
           map.setCenter(frey);
         }
+        else if(nombre == 'EosII'){
+          map.setCenter(eosii);
+        }
         map.setZoom(11)
       });
 
@@ -148,6 +152,7 @@
       crearZoom(controlDiv, map, 'Carex'); 
       crearZoom(controlDiv, map, 'Chinook');
       crearZoom(controlDiv, map, 'DonLucho');
+      crearZoom(controlDiv, map, 'EosII');
       crearZoom(controlDiv, map, 'Frey');  
       crearZoom(controlDiv, map, 'Mara');
       crearZoom(controlDiv, map, 'Odin'); 
@@ -172,6 +177,7 @@
       ["Sirocco", {{loopSirocco.0}}, {{loopSirocco.1}}, 4, "Nombre: <strong>Sirocco</strong> <br/> Fecha: {{loopSirocco.3}} <br/> Velocidad:  {{loopSirocco.2}} Nudos"],
       ["DonLucho", {{loopDonLucho.0}}, {{loopDonLucho.1}}, 4, "Nombre: <strong>Don Lucho</strong> <br/> Fecha: {{loopDonLucho.3}} <br/> Velocidad:  {{loopDonLucho.2}} Nudos"],
       ["Frey", {{loopFrey.0}}, {{loopFrey.1}}, 4, "Nombre: <strong>Frey</strong> <br/> Fecha: {{loopFrey.3}} <br/> Velocidad:  {{loopFrey.2}} Nudos"],
+      ["EosII", {{loopEosii.0}}, {{loopEosii.1}}, 4, "Nombre: <strong>Eos II</strong> <br/> Fecha: {{loopEosii.3}} <br/> Velocidad:  {{loopEosii.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -265,6 +271,9 @@
           }
           else if (this.title == "Frey"){
             window.location = "frey";            
+          }
+          else if (this.title == "EosII"){
+            window.location = "eosii";            
           }
         });
 
