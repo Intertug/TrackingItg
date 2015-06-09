@@ -176,6 +176,7 @@ def getColombia(request):
 	loopDonLucho = llenarMapa('DON LUCHO')
 	loopFrey = llenarMapa('FREY')
 	loopEosii = llenarMapa('EOS II')
+	loopCapidahl = llenarMapa('CAPIDAHL')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
@@ -202,19 +203,19 @@ def getPeru(request):
 
 def getCapidahl(request):
 	
-	gps = getGps(request, 'capidahl')
+	gps = getGps(request, 'CAPIDAHL')
 
-	rowsPropB = getPropulsor(request, 'capidahl', 'portside')
-	rowsPropE = getPropulsor(request, 'capidahl', 'starboard')
-	rowsGenB = getGenerador(request,'capidahl', 'portside')
-	rowsGenE = getGenerador(request,'capidahl', 'starboard')
+	#rowsPropB = getPropulsor(request, 'capidahl', 'portside')
+	#rowsPropE = getPropulsor(request, 'capidahl', 'starboard')
+	#rowsGenB = getGenerador(request,'capidahl', 'portside')
+	#rowsGenE = getGenerador(request,'capidahl', 'starboard')
 	
 	matrizGps = gps
 
 	loopCapidahl = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'capidahl':
+		if matrizGps[i]['rm'] == 'CAPIDAHL':
 			loopCapidahl.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('capidahl.html', locals())

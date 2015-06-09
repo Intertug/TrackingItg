@@ -101,6 +101,7 @@
       donlucho = new google.maps.LatLng(tugs[8][1], tugs[8][2]);
       frey = new google.maps.LatLng(tugs[9][1], tugs[9][2]);
       eosii = new google.maps.LatLng(tugs[10][1], tugs[10][2]);
+      capidahl = new google.maps.LatLng(tugs[11][1], tugs[11][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -138,6 +139,9 @@
         else if(nombre == 'EosII'){
           map.setCenter(eosii);
         }
+        else if(nombre == 'Capidahl'){
+          map.setCenter(capidahl);
+        }
         map.setZoom(11)
       });
 
@@ -149,6 +153,7 @@
       crearZoom(controlDiv, map, 'Alisios');
       crearZoom(controlDiv, map, 'Apolo');
       crearZoom(controlDiv, map, 'BahaireII');
+      crearZoom(controlDiv, map, 'Capidahl');
       crearZoom(controlDiv, map, 'Carex'); 
       crearZoom(controlDiv, map, 'Chinook');
       crearZoom(controlDiv, map, 'DonLucho');
@@ -178,6 +183,7 @@
       ["DonLucho", {{loopDonLucho.0}}, {{loopDonLucho.1}}, 4, "Nombre: <strong>Don Lucho</strong> <br/> Fecha: {{loopDonLucho.3}} <br/> Velocidad:  {{loopDonLucho.2}} Nudos"],
       ["Frey", {{loopFrey.0}}, {{loopFrey.1}}, 4, "Nombre: <strong>Frey</strong> <br/> Fecha: {{loopFrey.3}} <br/> Velocidad:  {{loopFrey.2}} Nudos"],
       ["EosII", {{loopEosii.0}}, {{loopEosii.1}}, 4, "Nombre: <strong>Eos II</strong> <br/> Fecha: {{loopEosii.3}} <br/> Velocidad:  {{loopEosii.2}} Nudos"],
+      ["Capidahl", {{loopCapidahl.0}}, {{loopCapidahl.1}}, 4, "Nombre: <strong>Capidahl</strong> <br/> Fecha: {{loopCapidahl.3}} <br/> Velocidad:  {{loopCapidahl.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -274,6 +280,9 @@
           }
           else if (this.title == "EosII"){
             window.location = "eosii";            
+          }
+          else if (this.title == "Capidahl"){
+            window.location = "capidahl";            
           }
         });
 
