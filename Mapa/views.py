@@ -188,6 +188,7 @@ def getMexico(request):
 	loopCristina = llenarMapa('CRISTINA')
 	loopKin = llenarMapa('KIN')
 	loopTanok = llenarMapa('TANOK')
+	loopKronos = llenarMapa('KRONOS')
 
 	return render_to_response('mexico.html', locals())
 
@@ -430,6 +431,25 @@ def getVali(request):
 			loopVali.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('vali.html', locals())
+
+def getKronos(request):
+	
+	gps = getGps(request, 'KRONOS')
+
+	#rowsProp = getPropulsor('CRISTINA')
+	#rowsPropE = getPropulsor(request, 'vali', 'starboard')
+	#rowsGen = getGenerador('CRISTINA')
+	#rowsGenE = getGenerador(request,'vali', 'starboard')
+	
+	matrizGps = gps
+
+	loopKronos = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'KRONOS':
+			loopKronos.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('kronos.html', locals())
 
 def getCristina(request):
 	
