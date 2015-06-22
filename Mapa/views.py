@@ -189,6 +189,7 @@ def getMexico(request):
 	loopKin = llenarMapa('KIN')
 	loopTanok = llenarMapa('TANOK')
 	loopKronos = llenarMapa('KRONOS')
+	loopSeatrout = llenarMapa('SEA TROUT')
 
 	return render_to_response('mexico.html', locals())
 
@@ -567,7 +568,7 @@ def getTanok(request):
 
 def getSeatrout(request):
 	
-	gps = getGps(request, 'seatrout')
+	gps = getGps(request, 'SEA TROUT')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -579,7 +580,7 @@ def getSeatrout(request):
 	loopSeatrout = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'seatrout':
+		if matrizGps[i]['rm'] == 'SEA TROUT':
 			loopSeatrout.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('seatrout.html', locals())
