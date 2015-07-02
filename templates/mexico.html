@@ -95,6 +95,7 @@
       kin = new google.maps.LatLng(tugs[2][1], tugs[2][2]);
       cristina = new google.maps.LatLng(tugs[3][1], tugs[3][2]);
       kronos = new google.maps.LatLng(tugs[4][1], tugs[4][2]);
+      oceanos = new google.maps.LatLng(tugs[5][1], tugs[5][2]);
       
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -114,6 +115,9 @@
         else if(nombre == 'Kronos'){
           map.setCenter(kronos);
         }
+        else if(nombre == 'Oceanos'){
+          map.setCenter(oceanos);
+        }
         map.setZoom(11)
       });
 
@@ -125,6 +129,7 @@
       crearZoom(controlDiv, map, 'Cristina');
       crearZoom(controlDiv, map, 'Kin');
       crearZoom(controlDiv, map, 'Kronos');
+      crearZoom(controlDiv, map, 'Oceanos');
       crearZoom(controlDiv, map, 'Seatrout'); 
       crearZoom(controlDiv, map, 'Tanok'); 
 
@@ -142,6 +147,7 @@
       ["Kin", {{loopKin.0}}, {{loopKin.1}}, 4, "Nombre: <strong>Kin</strong> <br/> Fecha: {{loopKin.3}} <br/> Velocidad:  {{loopKin.2}} Nudos"],
       ["Cristina", {{loopCristina.0}}, {{loopCristina.1}}, 4, "Nombre: <strong>Cristina</strong> <br/> Fecha: {{loopCristina.3}} <br/> Velocidad:  {{loopCristina.2}} Nudos"],
       ["Kronos", {{loopKronos.0}}, {{loopKronos.1}}, 4, "Nombre: <strong>Kronos</strong> <br/> Fecha: {{loopKronos.3}} <br/> Velocidad:  {{loopKronos.2}} Nudos"],
+      ["Oceanos", {{loopOceanos.0}}, {{loopOceanos.1}}, 4, "Nombre: <strong>Oceanos</strong> <br/> Fecha: {{loopOceanos.3}} <br/> Velocidad:  {{loopOceanos.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -220,6 +226,9 @@
           }
           else if (this.title == "Kronos"){
             window.location = "kronos";            
+          }
+          else if (this.title == "Oceanos"){
+            window.location = "oceanos";            
           }
         });
 

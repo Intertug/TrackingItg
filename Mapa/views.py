@@ -190,6 +190,7 @@ def getMexico(request):
 	loopTanok = llenarMapa('TANOK')
 	loopKronos = llenarMapa('KRONOS')
 	loopSeatrout = llenarMapa('SEA TROUT')
+	loopOceanos = llenarMapa('OCEANOS')
 
 	return render_to_response('mexico.html', locals())
 
@@ -242,6 +243,25 @@ def getCapidahl(request):
 #  			loopRemolcador.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 #  	return render_to_response('remolcador.html', locals())
+
+def getOceanos(request):
+	
+	gps = getGps(request, 'OCEANOS')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopOceanos = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'OCEANOS':
+			loopOceanos.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('oceanos.html', locals())
 
 def getChinook(request):
 	
