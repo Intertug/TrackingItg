@@ -626,7 +626,7 @@ def getKin(request):
 
 def getTitania(request):
 	
-	gps = getGps(request, 'titania')
+	gps = getGps(request, 'TITANIA')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -638,7 +638,7 @@ def getTitania(request):
 	loopTitania = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'titania':
+		if matrizGps[i]['rm'] == 'TITANIA':
 			loopTitania.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('titania.html', locals())
