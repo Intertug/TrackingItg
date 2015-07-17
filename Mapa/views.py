@@ -177,6 +177,7 @@ def getColombia(request):
 	loopFrey = llenarMapa('FREY')
 	loopEosii = llenarMapa('EOS II')
 	loopCapidahl = llenarMapa('CAPIDAHL')
+	loopTitania = llenarMapa('TITANIA')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
