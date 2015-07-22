@@ -147,7 +147,7 @@ def getMapa(request):
 	loopCapidahl = llenarMapa('capidahl')
 	loopMistral = llenarMapa('mistral')
 	loopSaga = llenarMapa('saga')
-	loopTitania = llenarMapa('titania')
+	#loopTitania = llenarMapa('titania')
 #	loopCristina = llenarMapa('cristina')
 	loopTanok = llenarMapa('tanok')
 	loopSeatrout = llenarMapa('seatrout')
@@ -177,7 +177,6 @@ def getColombia(request):
 	loopFrey = llenarMapa('FREY')
 	loopEosii = llenarMapa('EOS II')
 	loopCapidahl = llenarMapa('CAPIDAHL')
-	loopTitania = llenarMapa('TITANIA')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
@@ -624,25 +623,6 @@ def getKin(request):
 			loopKin.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('kin.html', locals())
-
-def getTitania(request):
-	
-	gps = getGps(request, 'TITANIA')
-
-	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-	#rowsGenB = getGenerador(request,'mistral', 'portside')
-	#rowsGenE = getGenerador(request,'mistral', 'starboard')
-	
-	matrizGps = gps
-
-	loopTitania = []
-
-	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'TITANIA':
-			loopTitania.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
-
-	return render_to_response('titania.html', locals())
 	
 def getSaga(request):
 	
