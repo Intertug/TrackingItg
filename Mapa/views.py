@@ -8,8 +8,8 @@ from django.http import HttpResponse
 import json
 
 #agregar ids
-remolcadores = {'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34,}
-ids = { "16":'ODIN', "10":'FREY', "5": 'CAREX', "13":'MARA', "8":'APOLO', "32":'CHINOOK', "29":'ALISIOS', "7":'DON LUCHO', "6" :'CRISTINA' , "27":'KIN', "26":'TANOK', "28":'MISTRAL', "23":'VALI', "33":'BARU PACIFICO', "34":'BARU INTI',}
+remolcadores = {'TITANIA': 22,'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34,}
+ids = { "22":'TITANIA',"16":'ODIN', "10":'FREY', "5": 'CAREX', "13":'MARA', "8":'APOLO', "32":'CHINOOK', "29":'ALISIOS', "7":'DON LUCHO', "6" :'CRISTINA' , "27":'KIN', "26":'TANOK', "28":'MISTRAL', "23":'VALI', "33":'BARU PACIFICO', "34":'BARU INTI',}
 
 def getPropulsor(nom):
 
@@ -147,7 +147,6 @@ def getMapa(request):
 	loopCapidahl = llenarMapa('capidahl')
 	loopMistral = llenarMapa('mistral')
 	loopSaga = llenarMapa('saga')
-	#loopTitania = llenarMapa('titania')
 #	loopCristina = llenarMapa('cristina')
 	loopTanok = llenarMapa('tanok')
 	loopSeatrout = llenarMapa('seatrout')
@@ -177,6 +176,7 @@ def getColombia(request):
 	loopFrey = llenarMapa('FREY')
 	loopEosii = llenarMapa('EOS II')
 	loopCapidahl = llenarMapa('CAPIDAHL')
+	loopTitania = llenarMapa('TITANIA')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
@@ -338,6 +338,25 @@ def getBaruInti(request):
 			loopBaruInti.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('baruinti.html', locals())
+
+def getTitania(request):
+	
+	gps = getGps(request, 'TITANIA')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopTitania = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'MARA':
+			loopTitania.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('titania.html', locals())
 
 def getMara(request):
 	
