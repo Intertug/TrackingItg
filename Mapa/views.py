@@ -353,7 +353,7 @@ def getTitania(request):
 	loopTitania = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'TITANIA ':
+		if matrizGps[i]['rm'] == 'TITANIA':
 			loopTitania.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('titania.html', locals())
