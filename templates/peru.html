@@ -120,7 +120,7 @@ for (var p in puntos) {
       AmarraderoAlbacoraS.setMap(mapa);
       AmarraderoCorvinaB.setMap(mapa);
       AmarraderoCorvina.setMap(mapa);
-      cuadradoCX.setMap(mapa);
+      //cuadradoCX.setMap(mapa);
       setMarkers(mapa, plataformas);
       setMarcadores(mapa, tugs);
 
@@ -169,12 +169,12 @@ for (var p in puntos) {
     new google.maps.LatLng(-3.586302, -80.752419),
   ];
 
-    var cuadrado = [
-    new google.maps.LatLng(-3.57875, -80.72),
-    new google.maps.LatLng(-3.57875, -80.753833),
-    new google.maps.LatLng(-3.624167, -80.753833),
-    new google.maps.LatLng(-3.624167, -80.72),
-  ];
+  //   var cuadrado = [
+  //   new google.maps.LatLng(-3.57875, -80.72),
+  //   new google.maps.LatLng(-3.57875, -80.753833),
+  //   new google.maps.LatLng(-3.624167, -80.753833),
+  //   new google.maps.LatLng(-3.624167, -80.72),
+  // ];
 
   // Construct the polygon.
   AmarraderoAlbacoraN = new google.maps.Polygon({
@@ -187,15 +187,15 @@ for (var p in puntos) {
     html: "<h4>Amarraderos Albacora Norte<br/>(Multiboyas para Buque Tanque)</h4>",
   });
 
-  cuadradoCX = new google.maps.Polygon({
-    paths: cuadrado,
-    strokeColor: '#FF0000',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    fillColor: '#FF0000',
-    fillOpacity: 0.35,
-    html: "<h4>cuadrado</h4>",
-  });
+  // cuadradoCX = new google.maps.Polygon({
+  //   paths: cuadrado,
+  //   strokeColor: '#FF0000',
+  //   strokeOpacity: 0.8,
+  //   strokeWeight: 2,
+  //   fillColor: '#FF0000',
+  //   fillOpacity: 0.35,
+  //   html: "<h4>cuadrado</h4>",
+  // });
 
   AmarraderoAlbacoraS = new google.maps.Polygon({
     paths: AmarraderoAlbacoraSCoords,
