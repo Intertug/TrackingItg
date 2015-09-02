@@ -8,7 +8,7 @@ from django.http import HttpResponse
 import json
 
 #agregar ids
-remolcadores = {'TITANIA': 22,'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34,}
+remolcadores = {'TITANIA': 22,'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34, 'RAN' : 18,}
 ids = { "22":'TITANIA',"16":'ODIN', "10":'FREY', "5": 'CAREX', "13":'MARA', "8":'APOLO', "32":'CHINOOK', "29":'ALISIOS', "7":'DON LUCHO', "6" :'CRISTINA' , "27":'KIN', "26":'TANOK', "28":'MISTRAL', "23":'VALI', "33":'BARU PACIFICO', "34":'BARU INTI',}
 
 def getPropulsor(nom):
@@ -177,6 +177,7 @@ def getColombia(request):
 	loopEosii = llenarMapa('EOS II')
 	loopCapidahl = llenarMapa('CAPIDAHL')
 	loopTitania = llenarMapa('TITANIA')
+	loopRan = llenarMapa('RAN')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
@@ -376,6 +377,25 @@ def getMara(request):
 			loopMara.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('mara.html', locals())
+
+def getRan(request):
+	
+	gps = getGps(request, 'RAN')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopRan = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'RAN':
+			loopRan.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('ran.html', locals())
 
 def getFrey(request):
 	

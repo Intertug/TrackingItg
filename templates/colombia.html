@@ -103,6 +103,7 @@
       eosii = new google.maps.LatLng(tugs[10][1], tugs[10][2]);
       capidahl = new google.maps.LatLng(tugs[11][1], tugs[11][2]);
       titania = new google.maps.LatLng(tugs[12][1], tugs[12][2]);
+      ran = new google.maps.LatLng(tugs[13][1], tugs[13][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -146,6 +147,9 @@
         else if(nombre == 'Titania'){
           map.setCenter(titania);
         }
+        else if(nombre == 'Ran'){
+          map.setCenter(ran);
+        }
         map.setZoom(11)
       });
 
@@ -164,7 +168,8 @@
       crearZoom(controlDiv, map, 'EosII');
       crearZoom(controlDiv, map, 'Frey');  
       crearZoom(controlDiv, map, 'Mara');
-      crearZoom(controlDiv, map, 'Odin'); 
+      crearZoom(controlDiv, map, 'Odin');
+      crearZoom(controlDiv, map, 'Ran'); 
       //crearZoom(controlDiv, map, 'Sirocco');
       crearZoom(controlDiv, map, 'Titania'); 
       
@@ -190,6 +195,7 @@
       ["EosII", {{loopEosii.0}}, {{loopEosii.1}}, 4, "Nombre: <strong>Eos II</strong> <br/> Fecha: {{loopEosii.3}} <br/> Velocidad:  {{loopEosii.2}} Nudos"],
       ["Capidahl", {{loopCapidahl.0}}, {{loopCapidahl.1}}, 4, "Nombre: <strong>Capidahl</strong> <br/> Fecha: {{loopCapidahl.3}} <br/> Velocidad:  {{loopCapidahl.2}} Nudos"],
       ["Titania", {{loopTitania.0}}, {{loopTitania.1}}, 4, "Nombre: <strong>Titania</strong> <br/> Fecha: {{loopTitania.3}} <br/> Velocidad:  {{loopTitania.2}} Nudos"],
+      ["Ran", {{loopRan.0}}, {{loopRan.1}}, 4, "Nombre: <strong>Ran</strong> <br/> Fecha: {{loopRan.3}} <br/> Velocidad:  {{loopRan.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -292,6 +298,9 @@
           }
           else if (this.title == "Titania"){
             window.location = "titania";            
+          }
+          else if (this.title == "Ran"){
+            window.location = "ran";            
           }
         });
 
