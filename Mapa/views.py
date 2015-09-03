@@ -166,7 +166,7 @@ def getMapa(request):
 def getColombia(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
-	loopCarex = llenarMapa('CAREX')
+	#loopCarex = llenarMapa('CAREX')
 	loopOdin = llenarMapa('ODIN')
 	loopMara = llenarMapa('MARA')
 	loopApolo = llenarMapa('APOLO')
@@ -178,6 +178,7 @@ def getColombia(request):
 	loopCapidahl = llenarMapa('CAPIDAHL')
 	loopTitania = llenarMapa('TITANIA')
 	loopRan = llenarMapa('RAN')
+	loopSaga = llenarMapa('SAGA')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	#loopSirocco = llenarMapa('SIROCCO')
 
@@ -665,7 +666,7 @@ def getKin(request):
 	
 def getSaga(request):
 	
-	gps = getGps(request, 'saga')
+	gps = getGps(request, 'SAGA')
 
 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
@@ -677,7 +678,7 @@ def getSaga(request):
 	loopSaga = []
 
 	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'saga':
+		if matrizGps[i]['rm'] == 'SAGA':
 			loopSaga.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('saga.html', locals())

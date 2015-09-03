@@ -104,6 +104,7 @@
       capidahl = new google.maps.LatLng(tugs[11][1], tugs[11][2]);
       titania = new google.maps.LatLng(tugs[12][1], tugs[12][2]);
       ran = new google.maps.LatLng(tugs[13][1], tugs[13][2]);
+      saga = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -150,6 +151,9 @@
         else if(nombre == 'Ran'){
           map.setCenter(ran);
         }
+        else if(nombre == 'Saga'){
+          map.setCenter(saga);
+        }
         map.setZoom(11)
       });
 
@@ -171,6 +175,7 @@
       crearZoom(controlDiv, map, 'Odin');
       crearZoom(controlDiv, map, 'Ran'); 
       //crearZoom(controlDiv, map, 'Sirocco');
+      crearZoom(controlDiv, map, 'Saga');
       crearZoom(controlDiv, map, 'Titania'); 
       
     }
@@ -196,6 +201,7 @@
       ["Capidahl", {{loopCapidahl.0}}, {{loopCapidahl.1}}, 4, "Nombre: <strong>Capidahl</strong> <br/> Fecha: {{loopCapidahl.3}} <br/> Velocidad:  {{loopCapidahl.2}} Nudos"],
       ["Titania", {{loopTitania.0}}, {{loopTitania.1}}, 4, "Nombre: <strong>Titania</strong> <br/> Fecha: {{loopTitania.3}} <br/> Velocidad:  {{loopTitania.2}} Nudos"],
       ["Ran", {{loopRan.0}}, {{loopRan.1}}, 4, "Nombre: <strong>Ran</strong> <br/> Fecha: {{loopRan.3}} <br/> Velocidad:  {{loopRan.2}} Nudos"],
+      ["Saga", {{loopSaga.0}}, {{loopSaga.1}}, 4, "Nombre: <strong>Saga</strong> <br/> Fecha: {{loopSaga.3}} <br/> Velocidad:  {{loopSaga.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -301,6 +307,9 @@
           }
           else if (this.title == "Ran"){
             window.location = "ran";            
+          }
+          else if (this.title == "Saga"){
+            window.location = "saga";            
           }
         });
 
