@@ -180,7 +180,7 @@ def getColombia(request):
 	loopRan = llenarMapa('RAN')
 	loopSaga = llenarMapa('SAGA')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
-	#loopSirocco = llenarMapa('SIROCCO')
+	loopSirocco = llenarMapa('SIROCCO')
 
 	return render_to_response('colombia.html', locals())
 

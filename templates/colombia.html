@@ -97,7 +97,7 @@
       chinook = new google.maps.LatLng(tugs[4][1], tugs[4][2]);
       alisios = new google.maps.LatLng(tugs[5][1], tugs[5][2]);
       //bahaireii = new google.maps.LatLng(tugs[6][1], tugs[6][2]);
-      //sirocco = new google.maps.LatLng(tugs[7][1], tugs[7][2]);
+      sirocco = new google.maps.LatLng(tugs[7][1], tugs[7][2]);
       donlucho = new google.maps.LatLng(tugs[8][1], tugs[8][2]);
       frey = new google.maps.LatLng(tugs[9][1], tugs[9][2]);
       eosii = new google.maps.LatLng(tugs[10][1], tugs[10][2]);
@@ -130,9 +130,9 @@
         //else if(nombre == 'BahaireII'){
         //  map.setCenter(bahaireii);
         //}
-        //else if(nombre == 'Sirocco'){
-        //  map.setCenter(sirocco);
-        //}
+        else if(nombre == 'Sirocco'){
+          map.setCenter(sirocco);
+        }
         else if(nombre == 'DonLucho'){
           map.setCenter(donlucho);
         }
@@ -174,7 +174,7 @@
       crearZoom(controlDiv, map, 'Mara');
       crearZoom(controlDiv, map, 'Odin');
       crearZoom(controlDiv, map, 'Ran'); 
-      //crearZoom(controlDiv, map, 'Sirocco');
+      crearZoom(controlDiv, map, 'Sirocco');
       crearZoom(controlDiv, map, 'Saga');
       crearZoom(controlDiv, map, 'Titania'); 
       
@@ -287,9 +287,9 @@
           //else if (this.title == "BahaireII"){
           //  window.location = "bahaireii";            
           //}
-          //else if (this.title == "Sirocco"){
-          //  window.location = "sirocco";            
-          //}
+          else if (this.title == "Sirocco"){
+            window.location = "sirocco";            
+          }
           else if (this.title == "DonLucho"){
             window.location = "donlucho";            
           }
