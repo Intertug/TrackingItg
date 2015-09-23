@@ -181,6 +181,7 @@ def getColombia(request):
 	loopSaga = llenarMapa('SAGA')
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	loopSirocco = llenarMapa('SIROCCO')
+	loopBaru = llenarMapa('BARU')
 
 	return render_to_response('colombia.html', locals())
 
@@ -264,6 +265,26 @@ def getOceanos(request):
 			loopOceanos.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('oceanos.html', locals())
+
+def getBaru(request):
+	
+	gps = getGps(request, 'BARU')
+
+	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
+	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
+	#rowsGenB = getGenerador(request,'mistral', 'portside')
+	#rowsGenE = getGenerador(request,'mistral', 'starboard')
+	
+	matrizGps = gps
+
+	loopBaru = []
+
+	for i in range(len(matrizGps)):
+		if matrizGps[i]['rm'] == 'BARU':
+			loopBaru.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
+
+	return render_to_response('baru.html', locals())
+
 
 def getChinook(request):
 	

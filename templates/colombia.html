@@ -105,6 +105,7 @@
       titania = new google.maps.LatLng(tugs[12][1], tugs[12][2]);
       ran = new google.maps.LatLng(tugs[13][1], tugs[13][2]);
       saga = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
+      baru = new google.maps.LatLng(tugs[15][1], tugs[15][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -154,6 +155,9 @@
         else if(nombre == 'Saga'){
           map.setCenter(saga);
         }
+        else if(nombre == 'Baru'){
+          map.setCenter(baru);
+        }
         map.setZoom(18)
       });
 
@@ -164,6 +168,7 @@
       // crearZoom(controlDiv, map, 'Remolcador');
       crearZoom(controlDiv, map, 'Alisios');
       crearZoom(controlDiv, map, 'Apolo');
+      crearZoom(controlDiv, map, 'Baru');
       //crearZoom(controlDiv, map, 'BahaireII');
       crearZoom(controlDiv, map, 'Capidahl');
       //crearZoom(controlDiv, map, 'Carex'); 
@@ -174,8 +179,8 @@
       crearZoom(controlDiv, map, 'Mara');
       crearZoom(controlDiv, map, 'Odin');
       crearZoom(controlDiv, map, 'Ran'); 
-      crearZoom(controlDiv, map, 'Sirocco');
       crearZoom(controlDiv, map, 'Saga');
+      crearZoom(controlDiv, map, 'Sirocco');
       crearZoom(controlDiv, map, 'Titania'); 
       
     }
@@ -202,6 +207,7 @@
       ["Titania", {{loopTitania.0}}, {{loopTitania.1}}, 4, "Nombre: <strong>Titania</strong> <br/> Fecha: {{loopTitania.3}} <br/> Velocidad:  {{loopTitania.2}} Nudos"],
       ["Ran", {{loopRan.0}}, {{loopRan.1}}, 4, "Nombre: <strong>Ran</strong> <br/> Fecha: {{loopRan.3}} <br/> Velocidad:  {{loopRan.2}} Nudos"],
       ["Saga", {{loopSaga.0}}, {{loopSaga.1}}, 4, "Nombre: <strong>Saga</strong> <br/> Fecha: {{loopSaga.3}} <br/> Velocidad:  {{loopSaga.2}} Nudos"],
+      ["Baru", {{loopBaru.0}}, {{loopBaru.1}}, 4, "Nombre: <strong>Baru</strong> <br/> Fecha: {{loopBaru.3}} <br/> Velocidad:  {{loopBaru.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -310,6 +316,9 @@
           }
           else if (this.title == "Saga"){
             window.location = "saga";            
+          }
+          else if (this.title == "Baru"){
+            window.location = "baru";            
           }
         });
 

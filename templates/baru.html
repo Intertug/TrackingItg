@@ -4,7 +4,7 @@
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
     <meta http-equiv="Refresh" content="600">
-    <title>Tracking Intertug: Apolo</title>
+    <title>Tracking Intertug: Barú</title>
     <style>
       html, body, #map-canvas {
         font-size: 16px;
@@ -122,12 +122,12 @@
       <article>
         <a id="atras" href="/">Flota</a>
         <a id="atras" href="/colombia">Flota Colombia</a>
-        <a id="hoy" href="/apolo">Hoy</a>
+        <a id="hoy" href="/baru">Hoy</a>
         <figure>
-          <img id="img" src="http://i.imgur.com/QchX0OO.jpg">
+          <img id="img" src="http://i.imgur.com/DBhjRKK.png">
           <img id="flag" src="http://i.imgur.com/9oCr1Nf.gif">
           <figurecaption>
-            <p class="datos"> <span class="par">Nombre: Carex</span> <span class="impar">Año: 1995</span> <span class="par">Bollard Pull: 19 Ton</span> <span class="impar">Velocidad: 10 Nudos</span></p>
+            <p class="datos"> <span class="par">Nombre: Barú</span> <span class="impar">Año: 2007</span> <span class="par">Bollard Pull: 66 Ton</span> <span class="impar">Velocidad: 12.9 Nudos</span></p>
           </figurecaption>         
         </figure>
       </article>
@@ -302,7 +302,7 @@
       function inicial() {
         var opciones = {
           zoom: 12,
-          center: new google.maps.LatLng( {{loopApolo.0.0}} , {{loopApolo.0.1}} ),
+          center: new google.maps.LatLng( {{loopBaru.0.0}} , {{loopBaru.0.1}} ),
           mapTypeId: google.maps.MapTypeId.SATELLITE,
           mapTypeControl: true,
           streetViewControl: false,
@@ -325,7 +325,7 @@
 
         var recorrido = [
 
-          {% for i in loopApolo %}
+          {% for i in loopBaru %}
 
             new google.maps.LatLng({{i.0}},{{i.1}}),
 
@@ -372,9 +372,9 @@
 
     var tugs = [
 
-          {% for i in loopApolo %}
+          {% for i in loopBaru %}
 
-            ["Apolo", {{i.0}}, {{i.1}}, 2, "Nombre: <strong>Apolo</strong> <br/> Posición: {{i.0}}, {{i.1}} <br/> Fecha: {{i.3}} <br/> Velocidad:  {{i.2}} Nudos"], 
+            ["Baru", {{i.0}}, {{i.1}}, 2, "Nombre: <strong>Baru</strong> <br/> Posición: {{i.0}}, {{i.1}} <br/> Fecha: {{i.3}} <br/> Velocidad:  {{i.2}} Nudos"], 
 
           {% endfor %}
 
@@ -382,7 +382,7 @@
 
     var alert = [
 
-          {% for i in loopApolo %}
+          {% for i in loopBaru %}
 
             {{i.2}}, 
 
