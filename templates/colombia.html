@@ -106,6 +106,7 @@
       ran = new google.maps.LatLng(tugs[13][1], tugs[13][2]);
       saga = new google.maps.LatLng(tugs[14][1], tugs[14][2]);
       baru = new google.maps.LatLng(tugs[15][1], tugs[15][2]);
+      boreas = new google.maps.LatLng(tugs[16][1], tugs[16][2]);
 
       google.maps.event.addDomListener(controlUI, 'click', function() {
         
@@ -158,6 +159,9 @@
         else if(nombre == 'Baru'){
           map.setCenter(baru);
         }
+        else if(nombre == 'Boreas'){
+          map.setCenter(boreas);
+        }
         map.setZoom(18)
       });
 
@@ -169,6 +173,7 @@
       crearZoom(controlDiv, map, 'Alisios');
       crearZoom(controlDiv, map, 'Apolo');
       crearZoom(controlDiv, map, 'Baru');
+      crearZoom(controlDiv, map, 'Boreas');
       //crearZoom(controlDiv, map, 'BahaireII');
       crearZoom(controlDiv, map, 'Capidahl');
       //crearZoom(controlDiv, map, 'Carex'); 
@@ -208,6 +213,7 @@
       ["Ran", {{loopRan.0}}, {{loopRan.1}}, 4, "Nombre: <strong>Ran</strong> <br/> Fecha: {{loopRan.3}} <br/> Velocidad:  {{loopRan.2}} Nudos"],
       ["Saga", {{loopSaga.0}}, {{loopSaga.1}}, 4, "Nombre: <strong>Saga</strong> <br/> Fecha: {{loopSaga.3}} <br/> Velocidad:  {{loopSaga.2}} Nudos"],
       ["Baru", {{loopBaru.0}}, {{loopBaru.1}}, 4, "Nombre: <strong>Baru</strong> <br/> Fecha: {{loopBaru.3}} <br/> Velocidad:  {{loopBaru.2}} Nudos"],
+      ["Boreas", {{loopBoreas.0}}, {{loopBoreas.1}}, 4, "Nombre: <strong>Boreas</strong> <br/> Fecha: {{loopBoreas.3}} <br/> Velocidad:  {{loopBoreas.2}} Nudos"],
     ];
 
     // var plataformas = [
@@ -319,6 +325,9 @@
           }
           else if (this.title == "Baru"){
             window.location = "baru";            
+          }
+          else if (this.title == "Boreas"){
+            window.location = "boreas";            
           }
         });
 

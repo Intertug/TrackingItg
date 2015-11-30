@@ -8,8 +8,8 @@ from django.http import HttpResponse
 import json
 
 #agregar ids
-remolcadores = {'TITANIA': 22,'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34, 'RAN' : 18,}
-ids = { "22":'TITANIA',"16":'ODIN', "10":'FREY', "5": 'CAREX', "13":'MARA', "8":'APOLO', "32":'CHINOOK', "29":'ALISIOS', "7":'DON LUCHO', "6" :'CRISTINA' , "27":'KIN', "26":'TANOK', "28":'MISTRAL', "23":'VALI', "33":'BARU PACIFICO', "34":'BARU INTI',}
+remolcadores = {'TITANIA': 22,'ODIN': 16, 'FREY':10, 'CAREX': 5, 'MARA':13, 'APOLO':8, 'CHINOOK':32, 'ALISIOS':29, 'DON LUCHO':7, 'CRISTINA' : 6, 'KIN':27, 'TANOK':26, 'MISTRAL':28, 'VALI':23, 'BARU PACIFICO':33, 'BARU INTI':34, 'RAN' : 18, "Boreas": 30}
+ids = { "22":'TITANIA',"16":'ODIN', "10":'FREY', "5": 'CAREX', "13":'MARA', "8":'APOLO', "32":'CHINOOK', "29":'ALISIOS', "7":'DON LUCHO', "6" :'CRISTINA' , "27":'KIN', "26":'TANOK', "28":'MISTRAL', "23":'VALI', "33":'BARU PACIFICO', "34":'BARU INTI', "18":"RAN"}
 
 def getPropulsor(nom):
 
@@ -182,6 +182,7 @@ def getColombia(request):
 	#loopBahaireII = llenarMapa('BAHAIRE II')
 	loopSirocco = llenarMapa('SIROCCO')
 	loopBaru = llenarMapa('BARU')
+	loopBoreas = llenarMapa('BOREAS')
 
 	return render_to_response('colombia.html', locals())
 
@@ -590,24 +591,6 @@ def getAquavit(request):
 
 	return render_to_response('aquavit.html', locals())
 
-# def getRan(request):
-	
-# 	gps = getGps(request, 'ran')
-
-# 	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-# 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-# 	#rowsGenB = getGenerador(request,'mistral', 'portside')
-# 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
-	
-# 	matrizGps = gps
-
-# 	loopRan = []
-
-# 	for i in range(len(matrizGps)):
-# 		if matrizGps[i]['rm'] == 'ran':
-# 			loopRan.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
-
-# 	return render_to_response('ran.html', locals())
 
 def getSirocco(request):
 	
@@ -725,10 +708,10 @@ def getMistral(request):
 
 def getBoreas(request):
 
-	gps = getGps(request, 'boreas')
+	gps = getGps(request, 'BOREAS')
 
-	rowsPropB = getPropulsor(request, 'boreas', 'portside')
-	rowsPropE = getPropulsor(request, 'boreas', 'starboard')
+	#rowsPropB = getPropulsor(request, 'boreas', 'portside')
+	#rowsPropE = getPropulsor(request, 'boreas', 'starboard')
 	#rowsGenB = getGenerador(request,'boreas', 'portside')
 	#rowsGenE = getGenerador(request,'boreas', 'starboard')
 	
@@ -737,7 +720,7 @@ def getBoreas(request):
 	loopBoreas = []
 
 	for i in range(len(matriz)):
-		if matriz[i]['rm'] == 'boreas':
+		if matriz[i]['rm'] == 'BOREAS':
 			loopBoreas.append([matriz[i]['latitud'], matriz[i]['longitud'], matriz[i]['velocidad'], matriz[i]['fechahora']])
 
 	return render_to_response('boreas.html', locals())
