@@ -176,7 +176,7 @@ def getColombia(request):
 	loopDonLucho = llenarMapa('DON LUCHO')
 	loopFrey = llenarMapa('FREY')
 	loopEosii = llenarMapa('EOS II')
-#	loopCapidahl = llenarMapa('CAPIDAHL')
+	loopCapidahl = llenarMapa('CAPIDAHL')
 	loopTitania = llenarMapa('TITANIA')
 	loopRan = llenarMapa('RAN')
 	loopSaga = llenarMapa('SAGA')
