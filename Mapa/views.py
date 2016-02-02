@@ -138,31 +138,6 @@ def llenarMapa(nombre):
 
 	return loopAlisios
 
-def getMapa(request):
-	
-	#agregar loopRemolcador = llenarMapa('remolcador')
-	loopBoreas = llenarMapa('boreas')
-	loopAlisios = llenarMapa('alisios')
-	loopEosii = llenarMapa('eosii')
-#	loopCapidahl = llenarMapa('capidahl')
-	loopMistral = llenarMapa('mistral')
-	loopSaga = llenarMapa('saga')
-#	loopCristina = llenarMapa('cristina')
-	loopTanok = llenarMapa('tanok')
-	loopSeatrout = llenarMapa('seatrout')
-	loopKin = llenarMapa('kin')
-	loopChinook = llenarMapa('chinook')
-#	loopOdin = llenarMapa('odin')
-	loopVali = llenarMapa('vali')
-	loopCarex = llenarMapa('carex')
-	loopAquavit = llenarMapa('aquavit')
-#	loopRan = llenarMapa('ran')
-	loopSirocco = llenarMapa('sirocco')
-	loopBarupacifico = llenarMapa('barupacifico')
-	loopBaruInti = llenarMapa('baruinti')
-
-	return render_to_response('mapa.html', locals())
-
 def getColombia(request):
 	
 	#agregar loopRemolcador = llenarMapa('remolcador')
@@ -180,7 +155,6 @@ def getColombia(request):
 	loopTitania = llenarMapa('TITANIA')
 	loopRan = llenarMapa('RAN')
 	loopSaga = llenarMapa('SAGA')
-	#loopBahaireII = llenarMapa('BAHAIRE II')
 	loopSirocco = llenarMapa('SIROCCO')
 	loopBaru = llenarMapa('BARU')
 
@@ -204,7 +178,7 @@ def getPeru(request):
 	loopMistral = llenarMapa('MISTRAL')
 	loopVali = llenarMapa('VALI')
 	loopBarupacifico = llenarMapa('BARU PACIFICO')
-	loopBaruInti = llenarMapa('BARU INTI')
+	#loopBaruInti = llenarMapa('BARU INTI')
 
 	return render_to_response('peru.html', locals())
 
@@ -226,27 +200,6 @@ def getCapidahl(request):
 			loopCapidahl.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('capidahl.html', locals())
-
-# agregar a cada remolcador:
-# def getRemolcador(request):
-	
-# 	gps = getGps(request, 'remolcador')
-
-# 	#agregar si se tiene daq en propulsor y generador
-#  	#rowsPropB = getPropulsor(request, 'remolcador', 'portside') 
-#  	#rowsPropE = getPropulsor(request, 'remolcador', 'starboard') 
-#  	#rowsGenB = getGenerador(request,'remolcador', 'portside')
-#  	#rowsGenE = getGenerador(request,'remolcador', 'starboard')
-	
-#  	matrizGps = gps
-
-#  	loopRemolcador = []
-
-#  	for i in range(len(matrizGps)):
-#  		if matrizGps[i]['rm'] == 'remolcador':
-#  			loopRemolcador.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
-
-#  	return render_to_response('remolcador.html', locals())
 
 def getBoreas(request):
 	
@@ -325,32 +278,14 @@ def getChinook(request):
 
 	return render_to_response('chinook.html', locals())
 
-def getBahaireII(request):
-	
-	gps = getGps(request, 'BAHAIRE II')
-
-	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-	#rowsGenB = getGenerador(request,'mistral', 'portside')
-	#rowsGenE = getGenerador(request,'mistral', 'starboard')
-	
-	matrizGps = gps
-
-	loopBahaireII = []
-
-	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'BAHAIRE II':
-			loopBahaireII.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
-
-	return render_to_response('bahaireii.html', locals())
 
 def getBarupacifico(request):
 	
 	gps = getGps(request, 'BARU PACIFICO')
 
-	rowsProp = getPropulsor('BARU PACIFICO')
+	#rowsProp = getPropulsor('BARU PACIFICO')
 	#rowsPropE = getPropulsor(request, 'barupacifico', 'starboard')
-	rowsGen = getGenerador('BARU PACIFICO')
+	#rowsGen = getGenerador('BARU PACIFICO')
 	#rowsGenE = getGenerador(request,'barupacifico', 'starboard')
 	
 	matrizGps = gps
@@ -367,9 +302,9 @@ def getBaruInti(request):
 	
 	gps = getGps(request, 'BARU INTI')
 
-	rowsProp = getPropulsor('BARU INTI')
+	#rowsProp = getPropulsor('BARU INTI')
 	#rowsPropE = getPropulsor(request, 'baruinti', 'starboard')
-	rowsGen = getGenerador('BARU INTI')
+	#rowsGen = getGenerador('BARU INTI')
 	#rowsGenE = getGenerador(request,'baruinti', 'starboard')
 	
 	matrizGps = gps
@@ -519,9 +454,9 @@ def getVali(request):
 	
 	gps = getGps(request, 'VALI')
 
-	rowsProp = getPropulsor('VALI')
+	#rowsProp = getPropulsor('VALI')
 	#rowsPropE = getPropulsor(request, 'vali', 'starboard')
-	rowsGen = getGenerador('VALI')
+	#rowsGen = getGenerador('VALI')
 	#rowsGenE = getGenerador(request,'vali', 'starboard')
 	
 	matrizGps = gps
@@ -590,25 +525,6 @@ def getCarex(request):
 			loopCarex.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
 
 	return render_to_response('carex.html', locals())
-
-def getAquavit(request):
-	
-	gps = getGps(request, 'aquavit')
-
-	#rowsPropB = getPropulsor(request, 'mistral', 'portside')
-	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-	#rowsGenB = getGenerador(request,'mistral', 'portside')
-	#rowsGenE = getGenerador(request,'mistral', 'starboard')
-	
-	matrizGps = gps
-
-	loopAquavit = []
-
-	for i in range(len(matrizGps)):
-		if matrizGps[i]['rm'] == 'aquavit':
-			loopAquavit.append([matrizGps[i]['latitud'], matrizGps[i]['longitud'], matrizGps[i]['velocidad'], matrizGps[i]['fechahora']])
-
-	return render_to_response('aquavit.html', locals())
 
 
 def getSirocco(request):
@@ -710,9 +626,9 @@ def getMistral(request):
 	
 	gps = getGps(request, 'MISTRAL')
 
-	rowsProp = getPropulsor('MISTRAL')
+	#rowsProp = getPropulsor('MISTRAL')
 	#rowsPropE = getPropulsor(request, 'mistral', 'starboard')
-	rowsGen = getGenerador('MISTRAL')
+	#rowsGen = getGenerador('MISTRAL')
 	#rowsGenE = getGenerador(request,'mistral', 'starboard')
 	
 	matrizGps = gps
@@ -762,107 +678,3 @@ def getAlisios(request):
 			loopAlisios.append([matriz[i]['latitud'], matriz[i]['longitud'], matriz[i]['velocidad'], matriz[i]['fechahora']])	
 
 	return render_to_response('alisios.html', locals())
-# Create your views here.
-
-def posicion(request):
-
-	barcos = ('ODIN', 'CAREX', 'MARA', 'APOLO', 'CHINOOK', 'ALISIOS', 'DON LUCHO', 'CRISTINA', 'KIN', 'TANOK', 'MISTRAL', 'VALI', 'BARU PACIFICO', 'BARU INTI',)
-	
-	data = {
-    "clusterGrid": 60,
-    "vessels": [],
-	}
-
-	for i in range(len(barcos)):
-
-		matriz = llenarMapa(barcos[i])
-
-		vessels = [
-		        {
-		            "veseelID": remolcadores[barcos[i]],
-		            "position": {
-		                "value": {
-		                    "lat": matriz[0],
-		                    "lon": matriz[1]
-		                },
-		                "label": "Posicion"
-		            },
-		            "speed": {
-		                "value": matriz[2],
-		                "label": "Velocidad"
-		            },
-		            "engine": [
-		                {
-		                    "type": "propulsion",
-		                    "code": "FR54",
-		                    "location": "center",
-		                    "dayhours": {
-		                        "value": 82,
-		                        "label": "Horas de uso"
-		                    },
-		                    "dayfuel": {
-		                        "value": 200,
-		                        "label": "Combustible consumido"
-		                    },
-		                    "maxrpm": {
-		                        "value": 1200,
-		                        "label": "RPM Maximo"
-		                    },
-		                    "maxfuelrate": {
-		                        "value": 201,
-		                        "label": "Maximo consumo por hora"
-		                    }
-		                }
-		            ]
-		        }
-		    ]
-
-		data['vessels'] += vessels
-
-	json_data = json.dumps(data)
-
-	return HttpResponse(json_data, content_type='application/json')
-
-def recorrido(request):
-
-
-	gps = getGps(request, ids[str(request.GET["vessel"])])
-
-	data = {
-		"vesselID": str(request.GET["vessel"]),
-		"coordenates" : [],
-	}
-	
-	for i in range(len(gps)):
-
-		alert = False
-		if gps[i]['velocidad'] > 8:
-			alert = True
-
-		point = [
-
-		    {
-            	"position": {
-                	"value": {
-                    	"lat": gps[i]['latitud'],
-                    	"lon": gps[i]['longitud']
-                	},
-                	"label": "Posicion"
-            	},
-            	"speed": {
-                	"value": gps[i]['velocidad'],
-                	"label": "Velocidad"
-            	},
-            	"datetime": {
-                	"value": gps[i]['fechahora'],
-                	"label": "Fecha"
-            	},
-            	"alert": alert
-        	}
-		]
-
-		data["coordenates"] += point
-
-	json_data = json.dumps(data)
-
-	return HttpResponse(json_data, content_type='application/json')
