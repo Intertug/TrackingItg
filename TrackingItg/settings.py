@@ -60,11 +60,11 @@ WSGI_APPLICATION = 'TrackingItg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'ITG-Sio',            
-        'USER': 'SioPlatformUsr',     
-        'PASSWORD': 'S10Pl@tf0rm',    
-        'HOST': 'MSSQL-PYTHON',       
-        'PORT': '1433',                      
+        'NAME': '#',            
+        'USER': '#',     
+        'PASSWORD': '#',    
+        'HOST': '#',       
+        'PORT': '#',                      
         'OPTIONS': {
                 'host_is_server': False,
                 'dsn': 'MSSQL-PYTHON',
@@ -73,9 +73,9 @@ DATABASES = {
 }
 DATABASE_NAME = 'ITG-Sio'
 DATABASE_HOST = 'MSSQL-PYTHON'
-DATABASE_PORT = '1433'
-DATABASE_USER = 'SioPlatformUsr'
-DATABASE_PASSWORD = 'S10Pl@tf0rm'
+DATABASE_PORT = '#'
+DATABASE_USER = '#'
+DATABASE_PASSWORD = '#'
 DATABASE_OPTIONS = {
         'host_is_server': False,
         'dsn': 'MSSQL-PYTHON',
