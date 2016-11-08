@@ -60,10 +60,10 @@ WSGI_APPLICATION = 'TrackinItg.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'daq',
-        'USER': 'root',                
-        'PASSWORD': 'variables',                
-        'HOST': '192.168.120.15',                      
+        'NAME': '#',
+        'USER': '#',                
+        'PASSWORD': '#',                
+        'HOST': '#',                      
         'PORT': '', 
     }
 }
